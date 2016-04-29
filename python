@@ -1,0 +1,13 @@
+sudo pip install <moduleName>
+
+IDE
+WING IDE
+
+command line operation
+import sh
+print sh.ifconfig("eth0")
+#from sh import ifconfig
+#print ifconfig("eth0")
+
+
+
