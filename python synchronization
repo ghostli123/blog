@@ -1,1 +1,30 @@
 http://www.laurentluce.com/posts/python-threads-synchronization-locks-rlocks-semaphores-conditions-events-and-queues/
+
+lock, rlock, condition, semaphore, event, queue
+
+lock: exclusively operate on quatoed region
+  lock.acquire()
+  lock.acquire() #block
+
+rlock: keep trace of the owner
+  rlock.acquire()
+  rlock.acquire() #non-block
+
+condition: producer and consumer
+  not only lock, but wait until something is available
+  
+semaphore: limited number of access to a server
+  lock with capacity
+  
+event: wait for an happening event
+  first wait
+  then set event
+  if reuse this event
+    event.clear()
+  should not operate on shared vailables, just a event signal
+
+queue: exchange information among threads
+  get information from queue
+  process on the fetched value (this part is not exclusive)
+  as simple as it looks like
+  
