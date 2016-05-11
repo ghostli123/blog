@@ -1,0 +1,4 @@
+It is not secure to use global varialbe. 
+
+If one has to use global variable, please declare it in a separate module. 
+When this module is imported, please use "import xx" directly; otherwise, such a global variable cannot be assigned to a value.
