@@ -1,3 +1,12 @@
-instructions
+docker official instructions
+
+su
+docker images
+docker run -i -t ghostli123/ubuntu /bin/bash 
+docker commit 73527b8b4261 ghostli123/ubuntu 8ce0ea7a1528 
+
+docker ps
+docker exec -it xxxxx(name/ID) /bin/bash
+
 https://docs.docker.com/linux/step_six/
 http://os.51cto.com/art/201407/444789_3.htm
