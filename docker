@@ -1,5 +1,11 @@
 docker official instructions
 
+curl -fsSL https://get.docker.com/ | sh
+sudo usermod -aG docker
+sudo service docker start
+service docker status
+docker run hello-world
+
 su
 docker images
 docker run -i -t ghostli123/ubuntu /bin/bash 
