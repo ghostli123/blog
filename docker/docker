@@ -33,3 +33,10 @@ http://cloudgeekz.com/400/how-to-use-openvswitch-with-docker.html
 
 apt-get install iputils-ping
 
+
+
+# The uninstallation step mentions:
+sudo apt-get purge docker-engine
+sudo apt-get autoremove --purge docker-engine
+# The above commands will not remove images, containers, volumes, or user created configuration files on your host. If you wish to delete all images, containers, and volumes run the following command:
+rm -rf /var/lib/docker
