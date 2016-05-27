@@ -1,0 +1,17 @@
+create a folder in github
+
+First you have to clone the repository to you local machine
+
+git clone github_url local_directory
+Then you can create local folders and files inside your local_directory, and add them to the repo using
+
+git add file_path
+You can also add everything using.
+
+git add .
+Note that git does not track empty folder. A work-around is to create a file inside the empty folder you want to track. I usually name that file empty but it can be whatever name you choose.
+
+Finally, you commit and push back to github
+
+git commit
+git push
