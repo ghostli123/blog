@@ -23,7 +23,7 @@ docker ps -a
 docker rm --link container1
 docker rm -f container1
 
-#start a stopped docker container
+#start a stopped/exited docker container
 docker start -ai kickass_feynman
 
 https://docs.docker.com/linux/step_six/
