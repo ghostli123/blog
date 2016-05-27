@@ -15,7 +15,7 @@ docker run  -t -d --name onos2 onosproject/onos
 docker ps
 docker exec -it xxxxx(name/ID) /bin/bash
 
-One liner to stop / remove all of Docker containers:
+#One liner to stop / remove all of Docker containers:
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
@@ -23,7 +23,8 @@ docker ps -a
 docker rm --link container1
 docker rm -f container1
 
-
+#start a stopped docker container
+docker start -ai kickass_feynman
 
 https://docs.docker.com/linux/step_six/
 http://os.51cto.com/art/201407/444789_3.htm
