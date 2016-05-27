@@ -31,3 +31,5 @@ http://os.51cto.com/art/201407/444789_3.htm
 
 http://cloudgeekz.com/400/how-to-use-openvswitch-with-docker.html
 
+apt-get install iputils-ping
+
