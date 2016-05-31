@@ -6,6 +6,10 @@ sudo service docker start
 service docker status
 docker run hello-world
 
+# enable network privilege. see full previleges here: http://linux.die.net/man/7/capabilities
+--cap-add=NET_ADMIN
+
+
 su
 docker images
 docker run -i -t ghostli123/ubuntu /bin/bash 
