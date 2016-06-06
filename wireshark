@@ -3,3 +3,8 @@ It looks like the version of tshark is associated with wireshark.
 To install wireshark from source code (e.g. for Ubuntu), please refer to this blog. 
 
 http://www.ithao123.cn/content-10806793.html
+
+libwiretap.so.4 issue
+
+sudo ldconfig
+wireshark
