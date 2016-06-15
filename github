@@ -1,0 +1,21 @@
+
+
+create a new repository on the command line
+echo "# test" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.research.att.com/yazhang/test.git
+git push -u origin master
+
+…or push an existing repository from the command line
+git remote add origin https://github.research.att.com/yazhang/test.git
+git push -u origin master
+
+
+git config --global http.sslverify false
+
+$ git config credential.helper store
+$ git push http://example.com/repo.git
+Username: <type your username>
+Password: <type your password>
