@@ -1,0 +1,18 @@
+first export project as a war file
+then install tomcat{X}
+
+After that, There are three important directories for Tomcat:
+/etc/tomcat{X} for configuration
+/etc/tomcat{X} for runtime, called CATALINA_HOME
+/usr/share/tomcat{X}-root for webapps
+
+if tomcat7 could not find {JAVA_HOME}
+sudo gedit /etc/default/tomcat7
+modify java_home part with "/usr"
+
+sudo service tomcat7 restart
+
+cp *.war to /var/lib/tomcat7/webapps
+
+for jdbc issue, please refer to the following post in which tomcat lib directory is "/usr/share/tomcat7/lib":
+http://www.cnblogs.com/dennisit/archive/2013/04/04/2999657.html
