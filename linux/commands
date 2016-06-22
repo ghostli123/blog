@@ -14,3 +14,9 @@ ssh-copy-id user@host
 ## or if your server uses custom port no:
 ssh-copy-id "user@host -p 1234"
 
+# scp 
+# receive file from remote machine
+scp att:/backup_6.22.2016.tgz /home/yazhang/backup/
+
+# find
+find / -name *.img
