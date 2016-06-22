@@ -1,0 +1,16 @@
+# backup
+tar -cvf /tmp/etc.tar /etc
+tar -xaf *.tar
+# backup the whold linux
+tar cvpzf backup.tgz --exclude=/proc --exclude=/lost+found --exclude=/backup.tgz --exclude=/mnt --exclude=/sys /
+
+# check disk space
+df -h
+
+# passwordless ssh
+ssh-keygen
+Then you'll need to copy the new key to your server:
+ssh-copy-id user@host
+## or if your server uses custom port no:
+ssh-copy-id "user@host -p 1234"
+
