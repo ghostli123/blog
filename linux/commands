@@ -20,3 +20,6 @@ scp att:/backup_6.22.2016.tgz /home/yazhang/backup/
 
 # find
 find / -name *.img
+
+# check linux kernel version
+uname -a
