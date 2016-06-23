@@ -23,3 +23,5 @@ find / -name *.img
 
 # check linux kernel version
 uname -a
+
+bwm-ng
