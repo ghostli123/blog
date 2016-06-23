@@ -1,0 +1,3 @@
+# nic
+ethtool (user space) -> ioctl (kernel space) -> driver -> nic
+lshw -C network
