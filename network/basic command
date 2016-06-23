@@ -1,0 +1,7 @@
+ifconfig -a 
+ifconfig p258p1 10.0.0.1 netmask 255.255.255.0
+ifconfig p258p2 10.0.0.2 netmask 255.255.255.0
+iperf -s -p 12345
+iperf -c 10.0.0.1 -p 12345 -t 10 -i 1
+
+bwm-ng
