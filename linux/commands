@@ -27,4 +27,3 @@ uname -a
 bwm-ng
 
 
-ethtool (user space) -> ioctl (kernel space) -> driver -> nic
