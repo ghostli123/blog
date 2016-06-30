@@ -27,3 +27,16 @@ uname -a
 bwm-ng
 
 lstopo
+
+# default ssh login directory
+add "cd /var/www/websites" to bashrc
+
+# enable ssh root login 
+Simply adding a password for root is not enough for Ubuntu 14.04 Server.
+You also need to edit /etc/ssh/sshd_config, and comment out the following line:
+PermitRootLogin without-password
+Just below it, add the following line:
+PermitRootLogin yes
+Then restart SSH:
+service ssh restart
+
