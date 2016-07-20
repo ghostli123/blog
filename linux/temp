@@ -1,0 +1,7 @@
+  547  fdisk -l
+  548  fdisk -l | more
+  549  newfs
+  550  mkfs
+  551  fdisk -l | more
+  552  fdisk -l | grep sdb
+  553  sudo fdisk -l
