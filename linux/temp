@@ -5,3 +5,11 @@
   551  fdisk -l | more
   552  fdisk -l | grep sdb
   553  sudo fdisk -l
+
+
+
+# check whether there is traffic going through a specific port
+tcpdump port 443 and '(tcp-syn|tcp-ack)!=0'
+
+# check whether a specific port is occupied
+sudo netstat -ano | grep 4500
