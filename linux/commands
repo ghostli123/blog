@@ -40,3 +40,5 @@ PermitRootLogin yes
 Then restart SSH:
 service ssh restart
 
+# ssh: “Agent admitted failure to sign using the key”
+ssh-add
