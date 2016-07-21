@@ -5,6 +5,7 @@ After that, There are three important directories for Tomcat:
 /etc/tomcat{X} for configuration
 /etc/tomcat{X} for runtime, called CATALINA_HOME
 /usr/share/tomcat{X}-root for webapps
+/usr/share/tomcat7/lib for tomcat7 library
 
 if tomcat7 could not find {JAVA_HOME}
 sudo gedit /etc/default/tomcat7
