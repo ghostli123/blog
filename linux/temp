@@ -12,4 +12,4 @@
 tcpdump port 443 and '(tcp-syn|tcp-ack)!=0'
 
 # check whether a specific port is occupied
-sudo netstat -ano | grep 4500
+sudo netstat -peant | grep ":8000 "
