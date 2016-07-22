@@ -13,3 +13,1005 @@ tcpdump port 443 and '(tcp-syn|tcp-ack)!=0'
 
 # check whether a specific port is occupied
 sudo netstat -peant | grep ":8000 "
+
+
+
+    1  ls
+    2  cd dpdk-16.04/
+    3  ls
+    4  cd ..
+    5  ls
+    6  more dpdkenv 
+    7  vi dpdk7env
+    8  cd dpdk7
+    9  ls
+   10  cd dpdk/
+   11  ls
+   12  vi ../../dpdk7env 
+   13  cd /root/ovs25/ovs7
+   14  ls
+   15  cd -
+   16  cd
+   17  ls
+   18  cd ovs25/
+   19  ls
+   20  vi dpdk7env
+   21  vi sriov-setup 
+   22  cp sriov-setup sriov7-setup
+   23  vi sriov7-setup
+   24  /root/ovs25/dpdk7/dpdk/tools/dpdk_nic_bind.py  --status
+   25  ls
+   26  vi runsetup
+   27  cp runsetup runsetup7
+   28  vi runsetup7
+   29  more run
+   30  cp run run7
+   31  vi run7
+   32  ls
+   33  vi pktgen-env 
+   34  . pktgen-env 
+   35  ls
+   36  more dpdk7env
+   37  export DPDK_DIR=/root/ovs25/dpdk/dpdk7
+   38  cd $DPDK_DIR
+   39   make config T=x86_64-native-linuxapp-gcc
+   40  vi dpdk7env
+   41  more dpdk7
+   42  more dpdk7env 
+   43  export DPDK_DIR=/root/ovs25/dpdk7/dpdk
+   44  cd $DPDK_DIR
+   45   make config T=x86_64-native-linuxapp-gcc
+   46   make install T=x86_64-native-linuxapp-gcc
+   47  clear
+   48  ls
+   49  ls -l
+   50  clear
+   51  ls
+   52  ls -l
+   53  cd ..
+   54  ls
+   55  cd ..
+   56  ls
+   57  more dpdkenv 
+   58  vi dpdk7env 
+   59  more dpdk7env 
+   60  export DPDK_DIR=/root/ovs25/dpdk7/dpdk
+   61  export DPDK_BUILD=$DPDK_DIR/x86_64-native-linuxapp-gcc/
+   62  cd /root/ovs25/ovs7
+   63   ./boot.sh
+   64  dnf install autoconfig
+   65  dnf install autoconf
+   66  dnf install automake
+   67  ls
+   68  ./boot.sh 
+   69  dnf install autoreconf
+   70  dnf install autoconf
+   71  ./boot.sh 
+   72  dnf install libtool
+   73  ./boot.sh 
+   74  pwd
+   75  cd ..
+   76  ls
+   77  more dpdk7env 
+   78  cd -
+   79  ls
+   80   ./configure --with-dpdk=$DPDK_BUILD CFLAGS="-g -O2 -Wno-cast-align"
+   81  dnf install libnuma
+   82  dnf install libnuma-devel
+   83  dnf install libnuma-src
+   84  dnf install  libnuma-devel
+   85  dnf install  libnuma-dev
+   86  dnf install  opempi
+   87  dnf install  openmpi
+   88  dnf install  numaactl
+   89  dnf install  numactl
+   90  dnf install  numactl-devel
+   91   ./configure --with-dpdk=$DPDK_BUILD CFLAGS="-g -O2 -Wno-cast-align"
+   92  pwd
+   93  more ../dpdk7env 
+   94  make
+   95  cd ..
+   96  ls
+   97  cd ovs-master/
+   98  ls
+   99  ./boot
+  100  ./boot.sh 
+  101  make
+  102  ls
+  103  uname -a
+  104  ifconfig | more
+  105  clear
+  106  ls
+  107  ls -l
+  108  pwd
+  109  ls
+  110  cd bin
+  111  ls
+  112  cd ..
+  113  ls
+  114  vi dpdk7env
+  115  cd /root/ovs25/ovs-master
+  116  ls
+  117  make
+  118  cd ..
+  119  ls
+  120  rm -rf ovs7
+  121  ls
+  122  ifconfig -a
+  123  cd ..
+  124  ls
+  125  pwd
+  126  tar -cf ovs25-new1.tar ovs25
+  127  gzip ovs25-new1.tar
+  128  ls
+  129  cd ovs25/
+  130  ls
+  131  cd pktgen
+  132  ls
+  133  cd dpdk/
+  134  ls
+  135  hostname
+  136  ifconfig
+  137  bwm-ng
+  138  ifconfig
+  139  ls
+  140  bwm-ng
+  141  tcpdump -i eth1
+  142  tcpdump -i eth0
+  143  bwm-ng
+  144  ps aux| grep bwm
+  145  kill -9 6905
+  146  kill -9 6805
+  147  ps aux| grep bwm
+  148  htop
+  149  dnf install htop
+  150  htop
+  151  df
+  152  clearr
+  153  clear
+  154  ls
+  155  fdisk -l
+  156  mkdir /mnt/test
+  157  mount /dev/sdb1 /mnt/test
+  158  cd /mnt/test
+  159  ls
+  160  vi fedora23.xml 
+  161  mkdir /var/third-party/images/
+  162  mkdir -p /var/third-party/images/
+  163  ls
+  164  cp *.* /var/third-party/images/
+  165  cd /var/third-party/images/
+  166  ls
+  167  ls -l
+  168  pwd
+  169  rm *
+  170  df
+  171  cd /home
+  172  mkdir -p third-party/images/
+  173  cd ..
+  174  cd /var
+  175  ln -s /home/third-party/ third-party
+  176  cd /var/third-party/
+  177  ls
+  178  cd images/
+  179  ls
+  180  cd ..
+  181  ls
+  182  cd third-party/
+  183  ls
+  184  cd images/
+  185  ls
+  186  cd ..
+  187  ls
+  188  pwd
+  189  cd ..
+  190  ls
+  191  pwd
+  192  cd images/
+  193  cd
+  194  cd /mnt/test
+  195  cp *.* /var/third-party/images/
+  196  ls -l /var/third-par
+  197  cd /var/
+  198  rm -rf third-party/
+  199  ln -s /home/third-party/ third-party
+  200  ls third-party/
+  201  ls
+  202  cd -
+  203  ls
+  204  cp *.* /var/third-party/images/
+  205  cd /var/third-party/images/
+  206  ls
+  207  vi fedora23.xml 
+  208  brctl add eth0br
+  209  brctl addbr eth0br
+  210  ls
+  211  virsh create fedora23.xml
+  212  dnf install libvirt
+  213  ping www.yahoo.com
+  214  dnf install libvirt
+  215  ls
+  216  virsh create fedora23.xml 
+  217  dnf install libvirtd
+  218  cd /etc/init.d
+  219  ls
+  220  cd ..
+  221  systemctl start
+  222  systemctl start libvirtd
+  223  cd -
+  224  cd
+  225  ls
+  226  cd /var/third-party/
+  227  ls
+  228  cd images/
+  229  ls
+  230  virsh create fedora23.xml 
+  231  vi fedora23.xml 
+  232  ifconfig
+  233  ifconfig | more
+  234  car /var/cache/libvirt/qemu/capabi
+  235  cat /var/cache/libvirt/qemu/capabi
+  236  pwd
+  237  ls
+  238  brctl show
+  239  brctl delif br1 eth0
+  240  brctl delif br1 eth1
+  241  brctl addif br1 eth1
+  242  brctl addif br1 eth0
+  243  brctl show
+  244  brctl delif br1 eth1
+  245  ifconfig eth0
+  246  find / -name dpdk*
+  247  /usr/local/share/dpdk/tools/dpdk_nic_bind.py --status
+  248  brctl show
+  249  virsh show
+  250  virsh list
+  251  cd -
+  252  ls
+  253  cd
+  254  ls
+  255  cd /var/third-party/
+  256  ls
+  257  cd images/
+  258  ls
+  259  virsh create fedora23.xml 
+  260  dnf install qemu
+  261  vi fedora23.xml 
+  262  virsh create fedora23.xml 
+  263  vi fedora23.xml 
+  264  virsh create fedora23.xml 
+  265  vi fedora23.xml 
+  266  virsh create fedora23.xml 
+  267  vi fedora23.xml 
+  268  virsh create fedora23.xml 
+  269  vi fedora23.xml 
+  270  cat /proc/cmdline 
+  271  vi fedora23.xml 
+  272  virsh create fedora23.xml 
+  273  vi fedora23.xml 
+  274  top
+  275  ps -elf | grep qemu
+  276  top
+  277  ps -elf | grep dnf
+  278  ps -elf | grep bmg
+  279  virsh create fedora23.xml 
+  280  top
+  281  ls
+  282  vi fedora23.xml
+  283  top
+  284  virsh create fedora23.xml 
+  285  pwd
+  286  reboot
+  287  ls
+  288  ifconfig
+  289  ethtool eth0
+  290  bwm-ng
+  291  dnf 
+  292  dnf install bwm-ng
+  293  ifconfig
+  294  dnf install bwm-ng
+  295  bwm-ng
+  296  ifconfig
+  297  tcpdump -i eth0 
+  298  tcpdump -i eth1
+  299  tcpdump -i eth0
+  300  bwm-ng
+  301  tcpdump -i eth0
+  302  ethtool eth0
+  303  tcpdump -i eth0
+  304  bwm-ng
+  305  tcpdump -i eth0
+  306  nstat
+  307  brctl show
+  308  ifconfig
+  309  route
+  310  brctl addbr yangbr0
+  311  brctl delbr yangbr0
+  312  clear
+  313  brctl addbr testbr0
+  314  brctl addif testbr0 eth0
+  315  brctl show
+  316  brctl delif br1 eth0
+  317  brctl show
+  318  brctl addif testbr0 eth0
+  319  brctl addif testbr0 eth1
+  320  brctl show
+  321  brctl stp enable
+  322  brctl stp eth0br on
+  323  brctl show
+  324  brctl stp eth0br off
+  325  brctl stp testbr0 off
+  326  brctl stp testbr0 on
+  327  brctl show
+  328  clear
+  329  brctl show
+  330  route
+  331  route -n
+  332  brctl show
+  333  brctl addif testbr0 eth1
+  334  brctl delif testbr0 eth0
+  335  brctl show
+  336  ifconfig
+  337  brctl show
+  338  ls
+  339  brctl br0
+  340  brctl addbr br1
+  341  ls
+  342  find / -name dpdk*
+  343  find / -name "dpdk*"
+  344  /usr/local/share/dpdk/tools/dpdk_nic_bind.py --status
+  345  /usr/local/share/dpdk/tools/dpdk_nic_bind.py -b ixgbe 0000:03:00.0
+  346  /usr/local/share/dpdk/tools/dpdk_nic_bind.py -b ixgbe 0000:03:00.1
+  347  ifconfig 
+  348  brctl addif eth0
+  349  brctl addif br1 eth0
+  350  brctl addif br1 eth1
+  351  brctl show
+  352  ifconfig
+  353  top
+  354  ifconfig
+  355  vi /etc/default/grub 
+  356  vi /etc/sysctl.conf 
+  357  cat /proc/meminfo | grep -i huge
+  358  vi /etc/sysctl.conf 
+  359  grub2-mkconfig -o /boot/grub2/grub.cfg 
+  360  reboot
+  361  ls
+  362  bwm-ng
+  363  ifconfig
+  364  ifconfig -a
+  365  brctl show
+  366  ifconfig -a
+  367  bwm-ng
+  368  ifconfig
+  369  ls
+  370  ls
+  371  top
+  372  cat /proc/meminfo | grep -i huge
+  373  ifconfig
+  374  brctl show
+  375  brctl addbr br1
+  376  brctl addif br1 eth0
+  377  brctl addif br1 eth1
+  378  ifconfig
+  379  ifconfig | more
+  380  ifconfig -a | more
+  381  ifconfig br1 up
+  382  ifconfig | more
+  383  pwd
+  384  cd /var/third-party/
+  385  ls
+  386  cd images/
+  387  ls
+  388  virsh create fedora23.xml 
+  389  brctl addbr eth0br
+  390  virsh create fedora23.xml 
+  391  ifconfig -a
+  392  ifconfig -a | more
+  393  brctl show 
+  394  find / -name dpdk*
+  395  /usr/local/share/dpdk/tools/dpdk_nic_bind.py --status
+  396  virsh list
+  397  virsh destroy fedora23
+  398  /usr/local/share/dpdk/tools/dpdk_nic_bind.py --status
+  399  brctl show
+  400  brctl addif br1 eth1
+  401  brctl show
+  402  ifconfig eth1
+  403  ifconfig 
+  404  ifconfig eth1 down
+  405  ifconfig eth1 up
+  406  ifconfig eth1 up
+  407  ifconfig eth1
+  408  ifconfig eth0
+  409  ifconfig -a | more
+  410  clear
+  411  ls
+  412  ifconfig
+  413  ifconfig | more
+  414  dnf install openvswitch
+  415  find / -name ovsvs-ctl
+  416  find / -name ovs-ctl
+  417  find / -name "*switchd"
+  418  pwd
+  419  ls
+  420  vi fedora23.xml
+  421  vi run
+  422  cp run run1
+  423  chmod +x run*
+  424  vi run1
+  425  rmmod ixgbe
+  426  modprobe ixgbe MDD=0,0 max_vfs=4,4
+  427  lspci | grep -i eth
+  428  vi run1
+  429  lspci -nn | grep 03:10.1
+  430  vi run1
+  431  ls
+  432  vi fedora23.xml
+  433  virsh create fedora23.xml
+  434  iptables -F
+  435  virsh list
+  436  virsh destroy fedora23
+  437  dpdk_nic_bind --status
+  438  ifconfig
+  439  ifconfig | more
+  440  brctl show
+  441  brctl addif br1 eth0
+  442  brctl addif br1 eth1
+  443  top
+  444  ifconfig eth1
+  445  ifconfig eth0
+  446  pwd
+  447  l
+  448  ls
+  449  mv run1 run-sriov
+  450  vi run-sriov 
+  451  rmmod ixgbe
+  452  modprobe ixgbe MDD=0,0 max_vfs=4,4
+  453  lspci | grep -i eth
+  454  lspci -nn | grep 03:10.1
+  455  lspci -nn | grep -i ETH
+  456  ls
+  457  vi fedora23.xml
+  458  virsh create fedora23.xml
+  459  vi fedora23.xml
+  460  virsh console fedora23
+  461  virsh destroy fedora23
+  462  vi fedora23.xml 
+  463  virsh create fedora23.xml
+  464  vi fedora23.xml 
+  465  virsh destroy fedora23
+  466  virsh create fedora23.xml
+  467  vi fedora23.xml 
+  468  virsh destroy fedora23
+  469  virsh create fedora23.xml
+  470  virsh destroy fedora23
+  471  virsh create fedora23.xml
+  472  virsh destroy fedora23
+  473  vi fedora23.xml 
+  474  virsh destroy fedora23
+  475  virsh create fedora23.xml
+  476  virsh destroy fedora23
+  477  vi fedora23.xml 
+  478  virsh destroy fedora23
+  479  virsh create fedora23.xml
+  480  virsh destroy fedora23
+  481  pwd
+  482  fdisk -l
+  483  mount /dev/sdb1 /mnt/test
+  484  cd /mnt/test
+  485  ls
+  486  cp fedora23.qcow2  /var/third-party/images
+  487  cd -
+  488  ls
+  489  virsh  create fedora23.xml
+  490  cp /mnt/test/fedora23.xml fedora23n.xml
+  491  vi fedora23n.xml
+  492  vi fedora23.xml
+  493  virsh  create fedora23.xml
+  494  virsh destroy fedora23
+  495  virsh  create fedora23.xml
+  496  virsh console fedora23
+  497  vi fedora23.xml
+  498  virsh destroy fedora23
+  499  virsh  create fedora23.xml
+  500  vi fedora23.xml
+  501  virsh destroy fedora23
+  502  virsh  create fedora23.xml
+  503  vi fedora23.xml
+  504  virsh  create fedora23.xml
+  505  virsh destroy fedora23
+  506  virsh  create fedora23.xml
+  507  cp fedora23.xml /mnt/test/fedora23-sriov.xml
+  508  cp run-sriov /mnt/test/
+  509  vi fedora23.xml
+  510  virsh destroy fedora23
+  511  virsh  create fedora23.xml
+  512  virsh destroy fedora23
+  513  vi fedora23.xml
+  514  virsh  create fedora23.xml
+  515  cd
+  516  umount /mnt/test
+  517  exit
+  518  vi authorized_keys
+  519  rm authorized_keys 
+  520  ls
+  521  cd .ssh/
+  522  ls
+  523  cd ..
+  524  ls
+  525  ifconfig
+  526  brctl addif br1 eth1
+  527  brctl show
+  528  brctl addif br1 eth0
+  529  brctl show
+  530  brctl addif br1 eth0
+  531  brctl addif br1 eth1
+  532  brctl show
+  533  clear
+  534  ls
+  535  fdisk -l
+  536  mount /dev/sdb1 /mnt/mnt
+  537  mount /dev/sdb1 /mnt/test
+  538  cd /mnt/test
+  539  ls
+  540  cp fedora23-sriov.xml /root/
+  541  cp *.qcow2 /var/third-party/images/
+  542  cd /root
+  543  ls
+  544  vi fedora23-sriov.xml 
+  545  cat /proc/cmdline 
+  546  vi fedora23-sriov.xml 
+  547  virsh create fedora23-sriov.xml
+  548  virsh destroy fedora23
+  549  virsh create fedora23-sriov.xml
+  550  brctl show
+  551  brctl delif br1 eth0
+  552  brctl delif br1 eth1
+  553  brctl show
+  554  ls
+  555  ifconfig
+  556  ifconfig | more
+  557  tcpdump -i eth0
+  558  tcpdump -i eth1
+  559  ls
+  560  vi fedora23-sriov.xml
+  561  virsh destroy fedora23
+  562  virsh create fedora23-sriov.xml
+  563  virsh destroy fedora23
+  564  virsh list
+  565  ls
+  566  vi fedora23-sriov.xml
+  567  virsh create fedora23-sriov.xml
+  568  ifconfig
+  569  ifconfig eth0 10.10.10.3/24
+  570  ping 10.10.10.2
+  571  ifconfig eth0 
+  572  ping 10.10.10.3
+  573  ping 10.10.10.2
+  574  ping 10.10.10.3
+  575  ping 10.10.10.2
+  576  lspci -nn | grep -i eth
+  577  virsh list
+  578  virsh create fedora23-sriov.xml
+  579  cd
+  580  ls
+  581  vi fedora23-sriov.xml 
+  582  virsh destroy fedora23
+  583  virsh create fedora23-sriov.xml
+  584  vi fedora23-sriov.xml 
+  585  virsh create fedora23-sriov.xml
+  586  ping 10.10.10.3
+  587  ping 10.10.10.2
+  588  virsh create fedora23-sriov.xml
+  589  vi fedora23-sriov.xml 
+  590  ifconfig
+  591  ifconfig eth0
+  592  ping 10.10.10.2
+  593  ifconfig eth0
+  594  iptables -F
+  595  ifconfig eth0
+  596  ifconfig eth1
+  597  ifconfig eth1 down
+  598  ifconfig eth0 down
+  599  ifconfig eth0
+  600  ifconfig eth0 up
+  601  ifconfig eth0
+  602  virsh listy
+  603  virsh list
+  604  virsh destroy fedora23
+  605  reboot
+  606  ifconfig 
+  607  ping 10.10.10.8
+  608  ifconfig
+  609  ifconfig eth0
+  610  ifconfig eth1
+  611  ifconfig eth0 | more
+  612  ls
+  613  vi fedora23-sriov.xml
+  614  virsh destroy fedora23
+  615  virsh create fedora23-sriov.xml
+  616  vi fedora23-sriov.xml
+  617  virsh create fedora23-sriov.xml
+  618  virsh destroy fedora23
+  619  ifconfig eth0 10.10.10.3/24
+  620  ping 10.10.10.8
+  621  iptables -F
+  622  ping 10.10.10.8
+  623  ifconfig
+  624  lspci | grep -i eth
+  625  modprobe ixgbe MDD=0,0 ixgbe=2,2
+  626  lspci | grep -i eth
+  627  modprobe -r ixgbe
+  628  modprobe ixgbe MDD=0,0 ixgbe=2,2
+  629  lspci | grep -i eth
+  630  modprobe -r ixgbe
+  631  modprobe ixgbe MDD=0,0 max_vfs=2,2
+  632  lspci | grep -i eth
+  633  cd
+  634  ls
+  635  ifconfig
+  636  ifconfig eth0 10.10.10.3/24
+  637  ping 10.10.10.3
+  638  ping 10.10.10.8
+  639  ifconfig eth0
+  640  ping 10.10.10.8
+  641  ifconfig eth0
+  642  ifconfig eth0 10.10.10.3/24
+  643  ifconfig eth0
+  644  ping 10.10.10.8
+  645  ip addr add 10.10.10.3/24 dev eth0
+  646  ping 10.10.10.3
+  647  ping 10.10.10.8
+  648  lspci | grep -i eth
+  649  ls
+  650  virsh list
+  651  ls
+  652  cd
+  653  virsh create fedora23-sriov.xml
+  654  ifconfig
+  655  ls
+  656  virsh create fedora23-sriov.xml
+  657  brctl addbr eth0br
+  658  virsh create fedora23-sriov.xml
+  659  virsh console fedora23
+  660  ifconfig
+  661  ping 10.10.10.8
+  662  ifconfig
+  663  ifconfig | more
+  664  ip addr add 10.10.10.4/24 dev eth1
+  665  ping 10.10.10.4
+  666  ping 10.10.10.3
+  667  ifconfig
+  668  ping 10.10.10.10
+  669  ip link dev eth0 down
+  670  ip link 
+  671  ip link set eth0 down
+  672  ip link set eth0 up
+  673  ip add show
+  674  ifconfig eth0
+  675  ifconfig eth1
+  676  ip link set eth1 down
+  677  ip link set eth1 up
+  678  ifconfig | more
+  679  ls
+  680  dpdk_nic_bind --status
+  681  ifconfig eth0
+  682  ifconfig eth1
+  683  ip addr add 10.10.10.3/24 broadcast 10.10.10.255 dev eth1
+  684  ping 10.10.10.2
+  685  ifconfig eth1
+  686  ping 10.10.10.2
+  687  ifconfig
+  688  ls
+  689  ls -lrt
+  690  sftp 10.10.10.2
+  691  ping 10.10.10.2
+  692  sftp 10.10.10.2
+  693  ls
+  694  cd ovs25/
+  695  ls
+  696  cd ..
+  697  ls
+  698  brctl show
+  699  ifconfig
+  700  brctl addif eth0
+  701  brctl show
+  702  brctl add testbr
+  703  brctl addbr testbr
+  704  brctl addif testbr eth0
+  705  brctl addif testbr eth1
+  706  brctl show
+  707  bwm-ng
+  708  brctl show
+  709  ifconfig
+  710  cd ovs25/
+  711  ls
+  712  cd pktgen
+  713  ls
+  714  cd pktgen-dpdk/
+  715  ls
+  716  cd ..
+  717  s
+  718  ls
+  719  cd dpdk/
+  720  ls
+  721  cd tools/
+  722  ls
+  723  ./dpdk_nic_bind.py --status
+  724  brctl show
+  725  bwm-ng
+  726  tcpdump -i eth0
+  727  tcpdump -nei eth0
+  728  tcpdump -nei eth1
+  729  tcpdump -nei eth0
+  730  ls
+  731  bwm-ng
+  732  brctl show
+  733  bwm-ng
+  734  ls
+  735  cd dpdk/
+  736  ls
+  737  cd dpdk-16.04/
+  738  ls
+  739  cd examples/
+  740  ls
+  741  cd l3fwd
+  742  ls
+  743  make
+  744  ls
+  745  cd build/
+  746  ls
+  747  ./l3fwd 
+  748  ./l3fwd help
+  749  ls
+  750  exit
+  751  ls
+  752  vi fedora23-sriov.xml 
+  753  exit
+  754  bwm-ng
+  755  brctl show
+  756  ifconfig
+  757  brctl show
+  758  ifconfig
+  759  bwm-ng
+  760  ifconfig
+  761  ls
+  762  cd ovs25/
+  763  ls
+  764  cd dpdk
+  765  cd dpdk-16.04/
+  766  ls
+  767  cd examples/
+  768  ifconfig
+  769  ls
+  770  vi fedora23-sriov.xml 
+  771  exit
+  772  ls
+  773  ovs-vsctl show
+  774  ovs-vsctl del-port ovsbr eth0
+  775  ovs-vsctl del-port ovsbr eth1
+  776  ovs-vsctl show
+  777  brctl show
+  778  brctl addif testbr eth0
+  779  brctl addif testbr eth1
+  780  brctl show
+  781  ifconfig testbr
+  782  clear
+  783  ps -elf | grep qemu
+  784  ifconfig
+  785  brcrl show
+  786  brctl show
+  787  pwd
+  788  ls
+  789  cd dpdk/
+  790  ls
+  791  cd
+  792  ls
+  793  cd ovs25/
+  794  ls
+  795  cd pktgen
+  796  ls
+  797  cd ..
+  798  ls
+  799  cd pktgen
+  800  ls
+  801  cd dpdk/
+  802  ls
+  803  cd examples/
+  804  ls
+  805  cd l3fwd-vf
+  806  ls
+  807  make
+  808  ls
+  809  cd build/
+  810  ls
+  811  cd ..
+  812  ls
+  813  cd ..
+  814  ls
+  815  cd l3fwd
+  816  ls
+  817  make
+  818  ls
+  819  cd build/
+  820  ls
+  821  ./l3fwd 
+  822  ls
+  823  ps -elf | grep l3
+  824  ls
+  825  cd
+  826  ls
+  827  cd ovs25/
+  828  ls
+  829  d
+  830  cd
+  831  find / -name reset*
+  832  pwd
+  833  ls
+  834  cd ovs25
+  835  ls
+  836  cd pkten
+  837  cd pktgen
+  838  ls
+  839  cd pktgen-dpdk
+  840  ls
+  841  ./setup.sh 
+  842  ls
+  843  vi setup.sh
+  844  ./setup.sh 
+  845  ls
+  846  cd ..
+  847  ls
+  848  cd dpdk/
+  849  ls
+  850  cd edx
+  851  cd examples/
+  852  l,s
+  853  ls
+  854  cd l3fwd
+  855  ls
+  856  make
+  857  cd build/
+  858  ls
+  859  ./l3fwd -c 0x6 -n 2 -- -p 0x3 --config="(0,0,1),(0,1,2),(1,0,9),(1,1,10)"
+  860  ./l3fwd -c 0x6 -n 2 -- -p 0x3 --config="(0,0,1),(0,1,2),(1,0,1),(1,1,2)"
+  861  pwd
+  862  c d..
+  863  cd ..
+  864  ls
+  865  cd ..
+  866  ls
+  867  brctl show
+  868  cd l2fwd
+  869  ls
+  870  cd build/
+  871  ls
+  872  ./l2fwd -c 0x6 -n 2 --socket-mem 2048 -w 03:00.0 -w 03:00.1 -- -q 1 -p 0x3
+  873  pwd
+  874  ls
+  875  ifconfig
+  876  ls
+  877  dpdk_nic_bind --status
+  878  dpdk_nic_bind -b ixgbe 03:00.0 03:00.1
+  879  brctl show
+  880  brctl addif testbr eth0
+  881  brctl addif testbr eth1
+  882  brctl show
+  883  ifconfig
+  884  ifconfig 
+  885  ls
+  886  brctl show
+  887  ifconfig testbr
+  888  ifconfig testbr up
+  889  ls
+  890  cd
+  891  dpdk_nic_bind --status
+  892  lspci | grep -i eth
+  893  modprobe -r ixgbe
+  894  modprobe  ixgbe MDD=0,0 max_vfx=2,2
+  895  lspci | grep -i eth
+  896  modprobe -r ixgbe
+  897  modprobe  ixgbe MDD=0,0 max_vfs=2,2
+  898  lspci | grep -i eth
+  899  cd
+  900  ls
+  901  virsh create fedora23-sriov.xml 
+  902  ifconfig
+  903  ip addr add 10.10.1.3/24 dev eth0
+  904  ifconfig
+  905  ping 10.10.1.2
+  906  ifconfig
+  907  ip addr del 10.10.1.3/24 dev eth0
+  908  ip addr add 10.10.1.3/24 broadcast 10.10.1.255 dev eth0
+  909  ifconfig
+  910  ping 10.10.1.2
+  911  ip addr del 10.10.1.3/24 broadcast 10.10.1.255 dev eth0
+  912  ip addr add 10.10.1.3/24 broadcast 10.10.1.255 dev eth1
+  913  ping 10.10.1.2
+  914  ip addr del 10.10.1.3/24 broadcast 10.10.1.255 dev eth1
+  915  ip addr add 10.10.1.3/24 broadcast 10.10.1.255 dev eth1
+  916  ping 10.10.1.2
+  917  ip addr del 10.10.1.3/24 broadcast 10.10.1.255 dev eth1
+  918  ip addr add 10.10.1.3/24 broadcast 10.10.1.255 dev eth0
+  919  ping 10.10.1.2
+  920  ping 10.10.1.3
+  921  ping 10.10.1.2
+  922  ifconfig
+  923  ip addr add 10.10.1.3/24 broadcast 10.10.1.255 dev eth0
+  924  ifconfig
+  925  tcpdump -nei eth0
+  926  tcpdump -nei eth1
+  927  iptables -F
+  928  ls
+  929  vi fedora23-sriov.xml
+  930  tcpdump -nei eth0
+  931  tcpdump -nei eth1
+  932  ifconfig -a | more
+  933  ifconfig eth1
+  934  ifconfig -a | more
+  935  clear
+  936  ls
+  937  rpm -a
+  938  rpm -qa
+  939  rpm -qa  | grep -i open
+  940  find / -name "*vswitchd*"
+  941  /usr/sbin/ovs-vswitchd --version
+  942  cd /usr/sbin
+  943  ls ovs*
+  944  cd /etc/
+  945  ls
+  946  cd rc.d
+  947  ls
+  948  cd init.d
+  949  ls
+  950  cd ..
+  951  cd rc3.d
+  952  ls
+  953  cd ..
+  954  find .
+  955  chkconfig --list NetworkManager
+  956  ls
+  957  cd /etc/sysconfig/
+  958  ls
+  959  cd network-scripts/
+  960  ls
+  961  vi ifcfg-eno1
+  962  grep -i NM *
+  963  uname -a
+  964  ls
+  965  more ifcfg-eno1
+  966  ls
+  967  vi ifcfg-eno1
+  968  ls
+  969  vi ifcfg-eno2
+  970  vi ifcfg-eth0
+  971  vi ifcfg-eth1
+  972  ifconfig
+  973  ifconfig | more
+  974  ls
+  975  ifconfig | more
+  976  ls
+  977  clearr
+  978  clear
+  979  ls
+  980  ps -elf | grep ovs
+  981  systemctl enable openvswitch.service
+  982  systemctl start openvswitch.service
+  983  ps -elf | grep ovs
+  984  ovs-vsadd ovsbr
+  985  ovs-vsctl addbr ovsbr
+  986  ovs-vsctl add-br ovsbr
+  987  ovs-vsctl show ovsbr
+  988  ovs-vsctl show 
+  989  clear
+  990  ls
+  991  virsh destroy fedora23
+  992  ls
+  993  ovs-vsctl add-port
+  994  ovs-vsctl add-port ovsbr eth0
+  995  ovs-vsctl add-port ovsbr eth1
+  996  ovs-vsctl show
+  997  ls
+  998  history
+  999  history > command.txt
