@@ -1,3 +1,25 @@
+# free huge page
+cd /dev/hugepages
+rm -rf *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
   547  fdisk -l
   548  fdisk -l | more
   549  newfs
