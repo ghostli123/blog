@@ -5,3 +5,7 @@ iperf -s -p 12345
 iperf -c 10.0.0.1 -p 12345 -t 10 -i 1
 
 bwm-ng
+
+# measurement
+iperf -s -u -p 9999 -l 64
+iperf -c 172.20.10.10 -p 9999 -u -l 64 -b 200m -i 3
