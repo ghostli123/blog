@@ -6,3 +6,9 @@ http://www.ibm.com/developerworks/cn/cloud/library/1401_zhaoyi_openswitch/
 
 # tc command hands-on
 http://blog.csdn.net/duanbeibei/article/details/41250029
+
+
+
+ovs-vsctl add-br ovsbr
+ovs-vsctl add-port ovsbr eth0
+ovs-vsctl add-port ovsbr eth1
