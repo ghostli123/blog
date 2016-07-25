@@ -1,3 +1,7 @@
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDL4PHJ5/peZbok3x+YIweuRn9xpYtJgSYFhlJolmq9r6oWoqkuWM2DlZt09PkpsOP179nyvdSXKJZTyZysKkOUKaWq4ajtuwQh/nKYNLznk8K5i7A2KrVzNly/ufkEZJTI7KQwUBa2iZSmQdcDQUfavf/FuXvukRBAoaxaxHO3VoIeBHEy5BgD4ngq+hjGXFZod+c9ByurS/TLWzyjSAsk390Y3YSfBGh0eH8HNnSqQA7UKezMswmJIVNKeLasRbcpT76zRk8BOD7sUzIGDz903oBRPEPIJP2ub1Oy8cmnV5cok8HZPExcW7K+YioikhOw7S+GRAP/tA8yO2zOgQ5l root@intel
+
+
+
 # free huge page
 cd /dev/hugepages
 rm -rf *
