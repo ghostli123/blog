@@ -1,0 +1,10 @@
+Basically you need to install subversion first:
+
+sudo apt-get install subversion
+Then you need to checkout the SVN repository, add your files and commit; that looks similar to this:
+
+svn co http://some.url/to/the/repository
+cd repository-folder
+cp ../files/from/otherfolder .
+svn add the/new/files
+svn commit
