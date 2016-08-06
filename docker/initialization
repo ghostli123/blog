@@ -1,0 +1,2 @@
+apt-get install lsb-release
+apt-get install net-tools
