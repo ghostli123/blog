@@ -13,6 +13,7 @@ docker run hello-world
 su
 docker images
 docker run -i -t ghostli123/ubuntu /bin/bash 
+docker run -i -t --cap-add SYS_ADMIN --device /dev/fuse ghostli123/phs /bin/bash   (for sshfs in container)
 docker commit 73527b8b4261 ghostli123/ubuntu 8ce0ea7a1528 
 docker run  -t -d --name onos2 onosproject/onos
 
