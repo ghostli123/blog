@@ -5,3 +5,10 @@ google-chrome --user-data-dir
 vim /etc/mysql/mysql.conf.d/mysqld.cnf
 bind-address            = 172.17.42.1
 sudo /etc/init.d/mysql restart
+
+
+mysql -u root -p
+Enter password: <enter password>
+mysql>GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'mns0agns1';
+mysql>FLUSH PRIVILEGES;
+mysql>exit
