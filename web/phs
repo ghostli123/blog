@@ -12,3 +12,6 @@ Enter password: <enter password>
 mysql>GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'mns0agns1';
 mysql>FLUSH PRIVILEGES;
 mysql>exit
+
+sshfs root@172.17.0.8:/configuration /home/livia/container
+fusermount -u /home/livia/container
