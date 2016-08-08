@@ -4,3 +4,4 @@ google-chrome --user-data-dir
 
 vim /etc/mysql/mysql.conf.d/mysqld.cnf
 bind-address            = 172.17.42.1
+sudo /etc/init.d/mysql restart
