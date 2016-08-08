@@ -1,4 +1,6 @@
 service ssh restart
 sshfs livia@172.17.42.1:/home/livia/configuration /share
 google-chrome --user-data-dir
+
 vim /etc/mysql/mysql.conf.d/mysqld.cnf
+bind-address            = 172.17.42.1
