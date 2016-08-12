@@ -1,0 +1,10 @@
+ 1721  vagrant
+ 1722  vagrant list-commands
+ 1723  vagrant init hashicorp/precise64
+ 1724  vagrant up
+ 1725  ls -l
+ 1726  vagrant ssh
+ 1727  vagrant plugin install vagrant-cachier
+ 1728  vagrant box add  --provider virtualbox https://atlas.hashicorp.com/puppetlabs/ubuntu-14.04-64-nocm
+ 1729  vagrant box add --provider virtualbox https://atlas.hashicorp.com/puppetlabs/centos-7.2-64-nocm
+ 1730  history
