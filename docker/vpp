@@ -1,0 +1,4 @@
+https://hub.docker.com/r/slieberth/vpp/
+
+echo "vm.nr_hugepages=1024" | sudo tee -a /etc/sysctl.d/20-hugepages.conf vm.nr_hugepages=1024 
+sudo sysctl --system
