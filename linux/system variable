@@ -1,0 +1,6 @@
+#set system variable
+sudo sysctl xxx=1
+#show system variable
+sudo sysctl -A
+#apply system variable if some parameters are written into /etc/sysctl.conf
+sudo sysctl --system
