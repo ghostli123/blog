@@ -1,3 +1,8 @@
+# magic way for reboot
+sudo sh -c 'echo 1 > /proc/sys/kernel/sysrq'
+sudo sh -c 'echo b > /proc/sysrq-trigger'
+
+
 # backup
 tar -cvf /tmp/etc.tar /etc
 tar -xaf *.tar
