@@ -1,2 +1,4 @@
 mount | grep -i huge 
 #remove all files in /dev/hugepages
+sudo umount /mnt/huge
+sudo mount -t hugetlbfs nodev /mnt/huge
