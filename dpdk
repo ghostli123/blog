@@ -1,1 +1,0 @@
-build/app/testpmd -c7 -n3 --vdev=eth_pcap0,iface=p260p1 --vdev=eth_pcap1,iface=p260p2 -- -i --nb-cores=2 --nb-ports=2 --total-num-mbufs=2048
