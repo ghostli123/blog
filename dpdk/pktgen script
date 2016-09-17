@@ -1,0 +1,132 @@
+-- pktgen configuration/running script
+--
+package.path = package.path ..";?.lua;test/?.lua;app/?.lua;../?.lua"
+
+require "Pktgen";
+
+local time_step = 10;		-- default 10 seconds
+-- local pcnt_rate = { 10, 20, 40, 60, 60, 60, 60, 60, 60, 80, 80, 80, 80, 80, 70, 70, 70, 70, 60, 60, 60, 40, 40, 70, 70, 80, 80, 40, 40, 40 };
+-- local pcnt_rate = { 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100 };
+-- local pcnt_rate = {1,5,10,30,50,70,90,100}
+local pcnt_rate = {3}
+
+sendport	= 1;
+recvport	= 1;
+-- pkt_size	= 64;
+-- local pkt_size_array = {64,128,384,512,1024,1500};
+-- local pkt_size_array = {1518};
+local pkt_size_array = {64};
+local dstip = "10.0.0.2";
+local srcip = "10.0.0.1";
+local netmask = "/24";
+local dst_mac = "00:25:90:5d:0f:0f";
+local src_mac = "00:25:90:5d:0f:43";
+total_time = 0;
+
+-- Take two lists and create one table with a merged value of the tables.
+-- Return a set or table = { { timo, rate }, ... } 
+function Set(step, list)
+	local	set = { };		-- Must have a empty set first.
+
+	for i,v in ipairs(list) do
+		set[i] = { timo = step, rate = v };
+	end
+
+	return set;
+end 
+
+function write_stats_to_file(log_file, sendport, rcvport, time, rate, pktSize)
+    local file = io.open(log_file, "a");
+    local stats = pktgen.portStats(sendport..","..rcvport, "port");
+    local sentpkts = stats[tonumber(sendport)].opackets;
+    local rcvdpkts = stats[tonumber(rcvport)].ipackets;
+
+    file:write(string.format("\n*** pkt size:\t%d\n", pktSize));
+    file:write(string.format("*** sending rate:\t%d percent of line rate\n", rate));
+    file:write(string.format("*** RESULT:\tFinished in\t\t%.6f seconds\n", time/3));
+    file:write(string.format("\t\tsent %d pkts\t%.4f Mpkts/sec\n", sentpkts, (sentpkts/1000000)/time));
+    file:write(string.format("\t\trcvd %d pkts\t%.4f Mpkts/sec\n", rcvdpkts, (rcvdpkts/1000000)/time));
+    file:write(string.format("\t\tdeltapkts(TX - RX):\t%d pkts\n***\n", sentpkts-rcvdpkts));
+
+    file:write(string.format("Pktgen-DPDK port %d dump:", sendport), "\n\n");
+    -- file:write(serialize("linkState", pktgen.linkState(sendport)));
+    -- file:write(serialize("isSending", pktgen.isSending(sendport)));
+    file:write(serialize("portSizes", pktgen.portSizes(sendport)));
+    file:write(serialize("pktStats", pktgen.pktStats(sendport)));
+    file:write(serialize("portRates", pktgen.portStats(sendport, "rate")));
+    file:write(serialize("portStats", pktgen.portStats(sendport, "port")));
+
+    file:close();
+end
+
+function main()
+    for i,pktSize in ipairs(pkt_size_array) do
+        printf("packetSize: %d\n", pktSize);
+
+        local setupTime = 4;
+        local startTimeStamp;
+        local endTimeStamp;
+        local elapsedTime;
+	local sending = 0;
+	local trlst = Set(time_step, pcnt_rate);
+
+	-- Stop the port sending and reset to 
+	pktgen.stop(sendport);
+	sleep(2);					-- Wait for stop to happen (not really needed)
+
+	-- Set up the default packet size fixed value for now.
+	pktgen.set(sendport, "size", pktSize);
+
+	pktgen.set_ipaddr(sendport, "dst", dstip);
+	pktgen.set_ipaddr(sendport, "src", srcip..netmask);
+	pktgen.dst_mac(sendport, dst_mac);
+	pktgen.src_mac(sendport, src_mac);
+
+	pktgen.set_proto(sendport..","..recvport, "udp");
+
+	total_time = 0;
+	-- v is the table to values created by the Set(x,y) function
+	for _,v in pairs(trlst) do
+
+		printf("   Percent load %d for %d seconds\n", v.rate, v.timo);
+
+		-- Set the rate to the new value
+		pktgen.set(sendport, "rate", v.rate);
+
+		-- If not sending packets start sending them
+		if ( sending == 0 ) then
+			pktgen.start(sendport);
+                        startTimeStamp = os.clock();
+			sending = 1;
+		end
+
+		-- sleep(setupTime);
+                -- pktgen.clear(sendport);
+
+		-- Sleep until we need to move to the next rate and timeout
+		sleep(v.timo);
+
+                -- Stop the port and do some cleanup
+                pktgen.stop(sendport);
+                endTimeStamp = os.clock()
+                elapsedTime = endTimeStamp - startTimeStamp; 
+                -- print(string.format("elapsed time: %.6f\n", os.clock() - startTimeStamp))
+		total_time = total_time + v.timo;
+                sending = 0;
+                sleep(5);
+		-- printf("elapsed Time:%f",elapsedTime, startTimeStamp, endTimeStamp);
+                write_stats_to_file("/root/ovs25/pktgen/pktgen-dpdk/result.txt", sendport, recvport, elapsedTime, v.rate, pktSize)
+                pktgen.clear(sendport);
+                sleep(5);
+	end
+
+	-- Stop the port and do some cleanup
+	pktgen.stop(sendport);
+	sending = 0;
+    end
+end
+
+-- printf("\n**** Traffic Profile Rate for %d byte packets ***\n", pkt_size);
+main();
+printf("\n*** Traffic Profile Done (Total Time %d) ***\n", total_time);
+printf("\nDone, Key pressed is (%s)\n", pktgen.continue("\nPress any key: "));
