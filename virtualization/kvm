@@ -6,3 +6,6 @@ virsh list --all
 arp -a
 ssh 192.168.122.224
 ethtool -i p260p1_0 |grep bus-info
+
+#install kvm and virsh
+http://www.howtogeek.com/117635/how-to-install-kvm-and-create-virtual-machines-on-ubuntu/
