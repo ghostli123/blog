@@ -9,3 +9,19 @@ ethtool -i p260p1_0 |grep bus-info
 
 #install kvm and virsh
 http://www.howtogeek.com/117635/how-to-install-kvm-and-create-virtual-machines-on-ubuntu/
+
+virt-manager: importing kvm image
+1) Copy the xml definition of your virtual machine from original host to your new host into /etc/libvirt/qemu/ 
+# scp /etc/libvirt/qemu/my-virtual-machine.xml myuser@newhost:/etc/libvirt/qemu/my-virtual-machine.xml
+(you can use virsh dumpxml)
+
+2) Copy the original image too /var/lib/libvirt/images
+# cd /var/lib/libvirt/images
+# scp my-image.iso myuser@newhost:/var/lib/libvirt/images/my-image.iso 
+Copying sparse file? use rsync instead of scp, otherwise scp will copy the full size of file
+http://dougsland.livejournal.com/118882.html
+
+3) Use virsh to enable your the virtual machine
+# virsh define /etc/libvirt/qemu/my-virtual-machine.xml
+
+4) Start your virtual machine from virt-manager
