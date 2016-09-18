@@ -11,3 +11,6 @@ ovs-vswitchd --pidfile --detach
 
 #close
 kill `cd /usr/local/var/run/openvswitch && cat ovsdb-server.pid ovs-vswitchd.pid`
+
+
+sudo ovs-vsctl add-br br5 -- set bridge br5 datapath_type=netdev
