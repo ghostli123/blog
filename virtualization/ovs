@@ -1,3 +1,4 @@
+#start
 ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
             --remote=db:Open_vSwitch,Open_vSwitch,manager_options \
       --private-key=db:Open_vSwitch,SSL,private_key \
@@ -7,3 +8,6 @@ ovsdb-server --remote=punix:/usr/local/var/run/openvswitch/db.sock \
 
 ovs-vsctl --no-wait init
 ovs-vswitchd --pidfile --detach
+
+#close
+kill `cd /usr/local/var/run/openvswitch && cat ovsdb-server.pid ovs-vswitchd.pid`
