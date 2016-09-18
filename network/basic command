@@ -9,3 +9,8 @@ bwm-ng
 # measurement
 iperf -s -u -p 9999 -l 64
 iperf -c 172.20.10.10 -p 9999 -u -l 64 -b 200m -i 3
+
+#check routing table
+netstat -rn
+#add default gateway
+sudo route add default gw 10.0.0.1 eth0
