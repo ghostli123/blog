@@ -1041,3 +1041,189 @@ sudo netstat -peant | grep ":8000 "
   997  ls
   998  history
   999  history > command.txt
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  1301  sudo apt-get install openvswitch-switch
+ 1302  ls
+ 1303  cd ~
+ 1304  ls
+ 1305  cd ovs/
+ 1306  ls
+ 1307  cd openvswitch-2.5.0/
+ 1308  ls
+ 1309  sudo make uninstall
+ 1310  sudo ovs-vsctl show
+ 1311  sudo apt-get install openvswitch-switch
+ 1312  sudo ovs-vsctl show
+ 1313  sudo ovs-vsctl add-br br5
+ 1314  sudo ovs-vsctl add-port br5 tap1
+ 1315  sudo ovs-vsctl show
+ 1316  sudo ovs-vsctl add-port br5 tap2
+ 1317  sudo ovs-vsctl show
+ 1318  ls
+ 1319  sudo ovs-vsctl show
+ 1320  sudo ovs-vsctl del-port br5 tap1
+ 1321  sudo ovs-vsctl del-port br5 tap2
+ 1322  sudo ovs-vsctl show
+ 1323  sudo ovs-vsctl add-port br5 eth6
+ 1324  sudo ovs-vsctl show
+ 1325  sudo run ovs-ofctl show br5
+ 1326  sudo ovs-ofctl show br5
+ 1327  ovs-ofclt in_port=c1,actions=output:c2
+ 1328  ovs-ofctl in_port=c2,actions=output:c2
+ 1329  ovs-ofctl ovs-test in_port=3,priority=100,actions=output:1
+ 1330  ovs-ofctl br5 in_port=3,priority=100,actions=output:1
+ 1331  sudo ovs-ofctl show br5
+ 1332  sudo ovs-vsctl show
+ 1333  sudo ovs-ofctl br5 in_port=3,priority=100,actions=output:1
+ 1334  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:1
+ 1335  sudo ovs-ofctl show br5
+ 1336  sudo ovs-ofctl dump br5
+ 1337  sudo ovs-ofctl del-flow br5 in_port=3,priority=100,actions=output:1
+ 1338  sudo ovs-ofctl delete-flow br5 in_port=3,priority=100,actions=output:1
+ 1339  sudo ovs-ofctl del-flows br5 in_port=3,priority=100,actions=output:1
+ 1340  sudo ovs-ofctl del-flows br5 in_port=3,actions=output:1
+ 1341  sudo ovs-ofctl del-flows br5 in_port=3,priority=100,action=output:1
+ 1342  sudo ovs-ofctl del-flows br5 in_port=3,action=output:1
+ 1343  sudo ovs-ofctl del-flows br5 action=output:1
+ 1344  sudo ovs-ofctl del-flows br5 actions=output:1
+ 1345  sudo ovs-ofctl dump-flows br5
+ 1346  sudo ovs-ofctl del-flows br5 action=drop
+ 1347  sudo ovs-ofctl del-flows br5 
+ 1348  sudo ovs-ofctl dump-flows br5
+ 1349  sudo ovs-ofctl add-flow br5 priority=0 actions=NORMAL
+ 1350  sudo ovs-ofctl add-flow br5 priority=0,actions=NORMAL
+ 1351  sudo ovs-ofctl dump-flows br5
+ 1352  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:1
+ 1353  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1354  sudo ovs-ofctl dump-flows br5
+ 1355  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1356  sudo ovs-ofctl dump-flows br5
+ 1357  clear
+ 1358  sudo ovs-ofctl dump-flows br5
+ 1359  sudo ovs-ofctl del-flows br5 action=output
+ 1360  sudo ovs-ofctl del-flows br5 actions=output
+ 1361  sudo ovs-ofctl del-flows br5 priority=100
+ 1362  sudo ovs-ofctl del-flows br5 in_port=3
+ 1363  sudo ovs-ofctl del-flows br5 in_port=1
+ 1364  sudo ovs-ofctl dump-flows br5
+ 1365  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:2
+ 1366  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:2
+ 1367  sudo ovs-ofctl del-flows br5 in_port=3
+ 1368  sudo ovs-ofctl add-flow br5 in_port=2,priority=100,actions=output:1
+ 1369  sudo ovs-ofctl dump-flows br5
+ 1370  sudo ovs-ofctl del-flows br5 in_port=1
+ 1371  sudo ovs-ofctl del-flows br5 in_port=2
+ 1372  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:2
+ 1373  sudo ovs-ofctl add-flow br5 in_port=2,priority=100,actions=output:3
+ 1374  sudo ovs-ofctl dump-flows br5
+ 1375  sudo ovs-ofctl del-flows br5 in_port=2
+ 1376  sudo ovs-ofctl del-flows br5 in_port=3
+ 1377  sudo ovs-ofctl dump-flows br5
+ 1378  ovs-vsctl show
+ 1379  sudo ovs-vsctl show
+ 1380  sudo ovs-ofctl show ovs-switch
+ 1381  sudo ovs-ofctl show br5
+ 1382  sudo ovs-ofctl dump-tables br5
+ 1383  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:1
+ 1384  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1385  sudo ovs-ofctl dump-tables br5
+ 1386  sudo ovs-ofctl dump-flows br5
+ 1387  sudo ovs-ofctl del-flows br5 in_port=61
+ 1388  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1389  sudo ovs-ofctl dump-flows br5
+ 1390  clear
+ 1391  sudo ovs-ofctl dump-flows br5
+ 1392  sudo ovs-ofctl del-flows br5 in_port=1
+ 1393  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1394  sudo ovs-ofctl dump-flows br5
+ 1395  sudo ovs-vsctl add-port br5 eth7
+ 1396  sudo ovs-ofctl show br5
+ 1397  sudo ovs-ofctl dump-flows br5
+ 1398  sudo ovs-ofctl del-flows br5 in_port=1
+ 1399  sudo ovs-ofctl del-flows br5 in_port=3
+ 1400  sudo ovs-ofctl dump-flows br5
+ 1401  clear
+ 1402  sudo ovs-ofctl dump-flows br5
+ 1403  sudo ovs-ofctl show br5
+ 1404  ifconfig
+ 1405  ifconfig eth6 down
+ 1406  sudo ifconfig eth6 down
+ 1407  sudo ifconfig eth6 up
+ 1408  ifconfig
+ 1409  sudo ifconfig eth7 up
+ 1410  ifconfig
+ 1411  ls
+ 1412  ip addr flush dev eth6
+ 1413  sudo ip addr flush dev eth6
+ 1414  ifconfig
+ 1415  sudo ovs-ofctl dump-flows br5
+ 1416  sudo ovs-ofctl show br5
+ 1417  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1418  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:1
+ 1419  sudo ovs-ofctl add-flow br5 in_port=4,priority=100,actions=output:2
+ 1420  sudo ovs-ofctl add-flow br5 in_port=2,priority=100,actions=output:4
+ 1421  sudo ovs-ofctl dump-flows br5
+ 1422  sudo ovs-ofctl del-flows br5 in_port=1
+ 1423  sudo ovs-ofctl del-flows br5 in_port=2
+ 1424  sudo ovs-ofctl del-flows br5 in_port=3
+ 1425  sudo ovs-ofctl del-flows br5 in_port=4
+ 1426  sudo ovs-ofctl dump-flows br5
+ 1427  sudo ovs-ofctl add-flow br5 in_port=1,priority=100,actions=output:3
+ 1428  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:1
+ 1429  sudo ovs-ofctl add-flow br5 in_port=4,priority=100,actions=output:2
+ 1430  sudo ovs-ofctl add-flow br5 in_port=2,priority=100,actions=output:4
+ 1431  sudo ovs-ofctl dump-flows br5
+ 1432  sudo ovs-ofctl show br5
+ 1433  sudo ovs-ofctl dump-flows br5
+ 1434  sudo ovs-ofctl del-flows br5 in_port=3
+ 1435  sudo ovs-ofctl del-flows br5 in_port=1
+ 1436  sudo ovs-ofctl del-flows br5 in_port=2
+ 1437  sudo ovs-ofctl del-flows br5 in_port=4
+ 1438  sudo ovs-ofctl add-flow br5 in_port=3,priority=100,actions=output:13
+ 1439  sudo ovs-ofctl add-flow br5 in_port=14,priority=100,actions=output:17
+ 1440  sudo ovs-ofctl add-flow br5 in_port=18,priority=100,actions=output:4
+ 1441  sudo ovs-ofctl dump-flows br5
+ 1442  sudo ovs-ofctl add-flow br5 in_port=14,priority=200,actions=output:4
+ 1443  sudo ovs-ofctl dump-flows br5
+ 1444  sudo ovs-ofctl del-flows br5 in_port=18
+ 1445  sudo ovs-ofctl dump-flows br5
+ 1446  clear
+ 1447  sudo ovs-ofctl dump-flows br5
+ 1448  sudo ovs-ofctl del-flows br5 in_port=3
+ 1449  sudo ovs-ofctl del-flows br5 in_port=14
+ 1450  sudo ovs-ofctl dump-flows br5
+ 1451  clear
+ 1452  sudo ovs-ofctl dump-flows br5
+ 1453  sudo ovs-ofctl show br5
+ 1454  sudo ovs-vsctl del-port br5 eth6
+ 1455  sudo ovs-vsctl del-port br5 eth7
+ 1456  sudo ovs-ofctl show br5
+ 1457  sudo ovs-ofctl dump-flows br5
+ 1458  history
+
