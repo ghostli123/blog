@@ -6,7 +6,8 @@ http://www.ibm.com/developerworks/cn/cloud/library/1401_zhaoyi_openswitch/
 
 # tc command hands-on
 http://blog.csdn.net/duanbeibei/article/details/41250029
-
+tc qdisc add dev eth3 root netem delay 100ms
+tc qdisc del dev eth3 root netem delay 100ms
 
 
 ovs-vsctl add-br ovsbr
