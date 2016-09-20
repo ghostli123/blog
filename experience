@@ -1,0 +1,1 @@
+1) a vm with two interfaces which are connected to the same switch (e.g. ovs), then they are not supposed to be bridging together. Otherwise, the network load is heavy because there are many duplicated packets. 
