@@ -1,2 +1,6 @@
 sudo iptables -L
 sudo iptables -t nat -L
+
+#delete rules in iptables
+sudo iptables -t nat -L --line-numbers
+sudo iptables -D POSTROUTING 1
