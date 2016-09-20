@@ -47,3 +47,8 @@ service ssh restart
 
 # ssh: “Agent admitted failure to sign using the key”
 ssh-add
+
+
+
+# open gedit and jump to a specific line, and it commonly works as a command in sagasu for search over all files in a project
+gedit +%n %f
