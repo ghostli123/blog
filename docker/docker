@@ -38,7 +38,8 @@ http://cloudgeekz.com/400/how-to-use-openvswitch-with-docker.html
 
 apt-get install iputils-ping
 
-
+#restart an exited container
+docker start `docker ps -q -l` && docker attach `docker ps -q -l`
 
 # The uninstallation step mentions:
 sudo apt-get purge docker-engine
