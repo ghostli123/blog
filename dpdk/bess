@@ -39,3 +39,26 @@
    39  itor port
    40  show port
    41  quit
+   42  history
+   43  show pipeline
+   44  monitor pipeline
+   45  monitor port
+   46  deamon stop
+   47  daemon stop
+   48  history
+   49  monitor pipeline
+   50  show pipeline
+   51  bess/bin/dpdk_devbind.py --status
+   52  help
+   53  quit
+   54  daemon stop
+   55  quit
+   56  help
+   57  add port PMD P0 pci='03:00.0'
+   58  add port PMD P1 pci='03:00.1'
+   59  show status
+   60  show pipeline
+   61  add module PortInc pi0 {"port":"P0"}
+   62  add module PortOut po1 {"port":"P1"}
+   63  add connection pi0 po1
+   64  show pipeline
