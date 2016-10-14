@@ -21,3 +21,12 @@ sudo route del -net 192.168.122.0 gw 0.0.0.0 netmask 255.255.255.0 dev eth1
 
 #remove ipv6 address from an interface
 sudo ip -6 addr del fe80::200:ff:fe00:3/64 dev eth2
+
+
+
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         172.16.1.254    0.0.0.0         UG    100    0        0 eth2
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eth2
+172.16.1.0      0.0.0.0         255.255.255.0   U     0      0        0 eth2
+172.16.243.0    0.0.0.0         255.255.255.0   U     0      0        0 vmnet1
+192.168.6.0     0.0.0.0         255.255.255.0   U     0      0        0 vmnet8
