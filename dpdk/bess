@@ -1,0 +1,41 @@
+    1  daemon stop
+    2  daemon start
+    3  help
+    4  show mclass
+    5  help
+    6  show port
+    7  bess/bin/dpdk_devbind.py --status
+    8  ./bess/bin/dpdk_devbind.py --status
+    9   add port PMD P1 pci='03:00.0'
+   10   add port PMD P2 pci='03:00.1'
+   11  show port
+   12  monitor port
+   13  show pipeline
+   14  show port
+   15  add module PortOut npo {"port":"np"}
+   16  add module PortInc pi1 {"port":"P1"}
+   17  add module PortOut pi2 {"port":"P2"}
+   18  show pipeline
+   19  show module
+   20  show port
+   21  monitor module
+   22  monitor modules
+   23  delete module pi2
+   24  add module PortOut po2 {"port":"P2"}
+   25  add connection pi1 p02
+   26  add connection pi1 po2
+   27  show pipeline
+   28  show port
+   29  monitor modules
+   30  help
+   31  monitor port
+   32  help
+   33  mointor pipeline
+   34  show module
+   35  show status
+   36  show pipeline
+   37  monitor pipeline
+   38  monitor port
+   39  itor port
+   40  show port
+   41  quit
