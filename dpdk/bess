@@ -68,3 +68,105 @@
    
    add port PMD p5 vdev='eth_vhost0,iface=/tmp/sock0,queues=1'
    sudo qemu-system-x86_64 -enable-kvm -cpu host -m 1024M -smp 2,threads=1,sockets=1 -chardev socket,id=char0,path=/tmp/sock0 -netdev type=vhost-user,id=mynet0,chardev=char0,vhostforce -device virtio-net-pci,netdev=mynet0,mac=00:00:00:00:00:01 -object memory-backend-file,id=mem,size=1024M,mem-path=/mnt/huge,share=on -numa node,memdev=mem -mem-prealloc -net user,hostfwd=tcp::10022-:22 -net nic /home/yang/images/ubuntu_bess.img
+
+
+45  monitor port
+   46  deamon stop
+   47  daemon stop
+   48  history
+   49  monitor pipeline
+   50  show pipeline
+   51  bess/bin/dpdk_devbind.py --status
+   52  help
+   53  quit
+   54  daemon stop
+   55  quit
+   56  help
+   57  add port PMD P0 pci='03:00.0'
+   58  add port PMD P1 pci='03:00.1'
+   59  show status
+   60  show pipeline
+   61  add module PortInc pi0 {"port":"P0"}
+   62  add module PortOut po1 {"port":"P1"}
+   63  add connection pi0 po1
+   64  show pipeline
+   65  history
+   66  show pipeline
+   67  help
+   68  monitor port p0
+   69  monitor port P0
+   70  monitor port P1
+   71  add connection pi0 po1
+   72  show pipeline
+   73  show port
+   74  add module PortInc pi1 {"port":"P1"}
+   75  add module PortInc po0 {"port":"P0"}
+   76  show module
+   77  add module PortInc pi1 {"port":"P1"}
+   78  add module PortInc po0 {"port":"P0"}
+   79  add module PortInc test {"port":"P0"}
+   80  show pipeline
+   81  monitor port
+   82  monitor pipeline
+   83  show pipeline
+   84  delete connection pi0 po1
+   85  del connection pi0 po1
+   86  help
+   87  delete connection pi0 ogate
+   88  show pipeline
+   89  add module PortInc po0 {"port":"P0"}
+   90  delete modulepi0
+   91  delete module pi0
+   92  add module PortInc po0 {"port":"P0"}
+   93  add module PortInc pi0 {"port":"P0"}
+   94  show module
+   95  add module PortOut pi0 {"port":"P0"}
+   96  show module
+   97  add connection pi0 po1
+   98  delete module po1
+   99  delete module po0
+  100  delete module pi1
+  101  delete module pi0
+  102  add module PortInc pi0 {"port":"P0"}
+  103  add module PortOut po1 {"port":"P1"}
+  104  add module PortInc pi1 {"port":"P1"}
+  105  add module PortOut po0 {"port":"P0"}
+  106  add connection pi0 po1
+  107  add connection pi1 po0
+  108  show pipeline
+  109  add port vhost_user p0
+  110  p0 = PMDPort(vdev='eth_vhost0,iface=/tmp/sock0,queues=1')
+  111  add port PMDPort p5
+  112  help
+  113  add port PMD p5
+  114  add port PMD p5 vdev='eth_vhost0,iface=/tmp/sock0,queues=1'
+  115  show port
+  116  add port PMD vp1 container_pid=29492,name='test_container_eth0',ifname='eth0',ip_addr='192.168.10.1/24',mac_addr='02:00:00:00:00:02'
+  117  add port VPort vp1 container_pid=29492,name='test_container_eth0',ifname='eth0',ip_addr='192.168.10.1/24',mac_addr='02:00:00:00:00:02'
+  118  add port PMD vp1 container_pid=29492,name='test_container_eth0',ifname='eth0',ip_addr='192.168.10.1/24',mac_addr='02:00:00:00:00:02'
+  119  add port PMD vp1 vdev='eth_vhost5,iface=/tmp/sock5,queues=1' container_pid=29492,name='test_container_eth0',ifname='eth0',ip_addr='192.168.10.1/24',mac_addr='02:00:00:00:00:02'
+  120  add port PMD vp1 vdev='eth_vhost5,iface=/tmp/sock5,queues=1',container_pid=29492,name='test_container_eth0',ifname='eth0',ip_addr='192.168.10.1/24',mac_addr='02:00:00:00:00:02'
+  121  show port
+  122  delete port vp1
+  123  sudo route
+  124  show pipeline
+  125  add port PMD p5 vdev='eth_vhost0,iface=/tmp/sock0,queues=1'
+  126  add port PMD p6 vdev='eth_vhost1,iface=/tmp/sock1,queues=1'
+  127  show port
+  128  add port PMD p7 vdev='eth_vhost2,iface=/tmp/sock2,queues=1'
+  129  show module 
+  130  show port
+  131  add module PortInc pi3 {"port":"p7"}
+  132  show module
+  133  show pipeline
+  134  show mclass
+  135  show module
+  136  add module PortOut po3 {"port":"p7"}
+  137  show module
+  138  add connection pi0 po3
+  139  show pipeline
+  140  delete connection pi0 ogate po1
+  141  delete connection pi0 ogate 
+  142  show pipeline
+  143  add connection pi0 po3
+  144  show pipeline
