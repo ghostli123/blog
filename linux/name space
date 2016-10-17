@@ -1,0 +1,14 @@
+$ sudo ip netns add test_namespace
+$ sudo ip netns exec test_namespace sleep 1000000 &
+$ sudo ip netns pids test_namespace
+174939
+$ sudo nsenter -n -t 174939 bash 
+(no nsenter in util-linux? http://askubuntu.com/questions/439056/why-there-is-no-nsenter-in-util-linux)
+# ifconfig
+lo        Link encap:Local Loopback
+          LOOPBACK  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          
