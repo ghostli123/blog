@@ -65,3 +65,6 @@ virsh net-update default add ip-dhcp-host \
            
 # Install a new version of virsh from source
 http://fosshelp.blogspot.com/2014/04/solvedconfigure-error-libnl-devel-11-is.html
+
+# clearly turn off virbr0
+http://www.tinkerist.com/?p=1366
