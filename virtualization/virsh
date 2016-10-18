@@ -62,3 +62,6 @@ virsh net-update default add ip-dhcp-host \
           "<host mac='00:16:3e:1a:b3:4a' \
            name='ubuntu' ip='192.168.122.50' />" \
            --live --config
+           
+# Install a new version of virsh from source
+http://fosshelp.blogspot.com/2014/04/solvedconfigure-error-libnl-devel-11-is.html
