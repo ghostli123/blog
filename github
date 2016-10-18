@@ -19,3 +19,7 @@ $ git config credential.helper store
 $ git push http://example.com/repo.git
 Username: <type your username>
 Password: <type your password>
+
+
+# fork a repository from others
+http://www.linuxidc.com/Linux/2014-11/109785.htm
