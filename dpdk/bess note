@@ -1,2 +1,4 @@
 useful modules:
 latency.bess (combination of timestamp module and measure module) for measure vnf latency
+
+bess/bin/bessd -d -f
