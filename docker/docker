@@ -49,3 +49,6 @@ rm -rf /var/lib/docker
 
 # post of Coupling Docker and Open vSwitch
 http://fbevmware.blogspot.com/2013/12/coupling-docker-and-open-vswitch.html
+
+# copy a file out of docker container
+docker cp <containerId>:/file/path/within/container /host/path/target
