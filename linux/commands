@@ -58,3 +58,7 @@ gedit +%n %f
 sshfs user@host:remoteFolder localFolder
 #unmount remote folder
 fusermount -u localFolder
+
+
+# tcpdump .so permission denial
+/lib64/ld-linux-x86-64.so.2 /usr/sbin/tcpdump -ni eth0
