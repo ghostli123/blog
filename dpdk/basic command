@@ -1,0 +1,78 @@
+add port PMD P0 pci='03:00.0'
+add port PMD P1 pci='03:00.1'
+add module PortInc pi0 {"port":"P0"}
+add module PortOut po0 {"port":"P0"}
+add module PortInc pi1 {"port":"P1"}
+add module PortOut po1 {"port":"P1"}
+
+add connection pi0 po1
+add connection pi1 po0
+
+
+docker run --privileged --name vm1 --net='none' -itd ghostli123/ubuntu
+pid=`sudo docker inspect -f {{.State.Pid}} vm1`
+echo $pid
+sudo docker exec -i -t vm1 bash 
+
+docker run --privileged --name vm2 --net='none' -itd ghostli123/ubuntu
+pid=`sudo docker inspect -f {{.State.Pid}} vm2`
+echo $pid
+sudo docker exec -i -t vm2 bash 
+
+docker run --privileged --name vm3 --net='none' -itd ghostli123/ubuntu
+pid=`sudo docker inspect -f {{.State.Pid}} vm3`
+echo $pid
+sudo docker exec -i -t vm3 bash 
+
+add port VPort vp2 container_pid=29510,name='test_namespace_eth22',ifname='eth22',ip_addr='192.168.10.22/24',mac_addr='02:00:00:00:00:22'
+add port VPort vp3 container_pid=29510,name='test_namespace_eth23',ifname='eth23',ip_addr='192.168.10.23/24',mac_addr='02:00:00:00:00:23'
+
+add port VPort vp4 container_pid=18979,name='test_namespace_eth24',ifname='eth24',ip_addr='192.168.10.24/24',mac_addr='02:00:00:00:00:24'
+add port VPort vp5 container_pid=18979,name='test_namespace_eth25',ifname='eth25',ip_addr='192.168.10.25/24',mac_addr='02:00:00:00:00:25'
+
+add port VPort vp6 container_pid=47050,name='test_namespace_eth26',ifname='eth26',ip_addr='192.168.10.26/24',mac_addr='02:00:00:00:00:26'
+
+
+vm1 6648
+
+add module PortInc pi2 {"port":"vp2"}
+add module PortOut po2 {"port":"vp2"}
+add module PortInc pi3 {"port":"vp3"}
+add module PortOut po3 {"port":"vp3"}
+
+add module PortInc pi4 {"port":"vp4"}
+add module PortOut po4 {"port":"vp4"}
+add module PortInc pi5 {"port":"vp5"}
+add module PortOut po5 {"port":"vp5"}
+
+add module PortInc pi6 {"port":"vp6"}
+add module PortOut po6 {"port":"vp6"}
+
+add connection pi0 po2
+add connection pi2 po0
+add connection pi3 po4
+add connection pi5 po1
+add connection pi1 po5
+add connection pi4 po3
+
+
+delete connection pi3 ogate
+delete connection pi5 ogate
+delete connection pi1 ogate
+delete connection pi4 ogate
+add connection pi3 po1
+add connection pi1 po3
+
+
+
+brctl addbr br5
+brctl addif br5 eth22
+brctl addif br5 eth23
+ifconfig br5 up
+
+brctl addbr br5
+brctl addif br5 eth24
+brctl addif br5 eth25
+ifconfig br5 up
+
+sudo route add default gw 172.16.1.254
