@@ -62,3 +62,6 @@ fusermount -u localFolder
 
 # tcpdump .so permission denial
 /lib64/ld-linux-x86-64.so.2 /usr/sbin/tcpdump -ni eth0
+
+# kill all processes associated with filter result
+ps aux | grep python | grep yang | awk '{print $2}' | xargs kill -9
