@@ -1,0 +1,15 @@
+sudo apt-get install vnc4server
+sudo apt-get install gnome-panel
+vnc4server
+
+4.编辑启动脚步
+vim /home/用户名/.vnc/xstartup
+在&x-window-manager & 增加#
+然后再最下面增加2行
+startgnome &
+DISPLAY=:1 gnome-session &
+
+5.重启VNC服务
+vncserver -kill :1  然后再启动vnc服务输入vnc4server
+
+6.在window下打开vnc客户端输入 服务器IP+:1：
