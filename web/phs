@@ -15,3 +15,4 @@ mysql>exit
 
 sshfs root@172.17.0.8:/configuration /home/livia/container
 fusermount -u /home/livia/container
+umount -l /PATH/OF/BUSY-DEVICE
