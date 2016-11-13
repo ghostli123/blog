@@ -1,0 +1,6 @@
+int main()
+{
+    int a = 4;
+    cout<<setfill('0')<<setw(4)<<4<<endl;
+    return 0;
+}
