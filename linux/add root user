@@ -2,11 +2,11 @@
 https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
 
 # enable root access/login
-  http://www.computernetworkingnotes.com/ubuntu-12-04-tips-and-tricks/how-to-enable-root-in-ubuntu-12-04.html
-  % create the following file
-  touch /etc/lightdm/lightdm.conf
-  % fill with the following content
-  [SeatDefaults]
-  greeter-session=unity-greeter
-  user-session=ubuntu
-  greeter-show-manual-login=true
+http://www.computernetworkingnotes.com/ubuntu-12-04-tips-and-tricks/how-to-enable-root-in-ubuntu-12-04.html
+% create the following file
+touch /etc/lightdm/lightdm.conf
+% fill with the following content
+[SeatDefaults]
+greeter-session=unity-greeter
+user-session=ubuntu
+greeter-show-manual-login=true
