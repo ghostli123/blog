@@ -66,3 +66,8 @@ fusermount -u localFolder
 # kill all processes associated with filter result
 ps aux | grep python | grep yang | awk '{print $2}' | xargs kill -9
 ps aux | grep python | grep yang | grep -v color | awk '{print $2}' | xargs -I {} kill -9 {}
+
+# dpkg conflict
+sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock
