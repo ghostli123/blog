@@ -1,5 +1,5 @@
-add port PMD P0 pci='03:00.0'
-add port PMD P1 pci='03:00.1'
+add port PMDPort P0 pci='03:00.0'
+add port PMDPort P1 pci='03:00.1'
 add module PortInc pi0 {"port":"P0"}
 add module PortOut po0 {"port":"P0"}
 add module PortInc pi1 {"port":"P1"}
