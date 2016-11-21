@@ -1,2 +1,6 @@
 # prerequisite
 apt-get install gcc libc6-dev pkg-config bridge-utils uml-utilities zlib1g-dev libglib2.0-dev autoconf automake libtool libsdl1.2-dev 
+# configure and make
+./configure
+make -j30
+make install 
