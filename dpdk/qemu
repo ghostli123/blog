@@ -4,3 +4,6 @@ apt-get install gcc libc6-dev pkg-config bridge-utils uml-utilities zlib1g-dev l
 ./configure
 make -j30
 make install 
+
+# qemu command when running by virsh or virt-manager
+/var/log/libvirt/qemu
