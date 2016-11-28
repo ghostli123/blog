@@ -1,0 +1,2 @@
+# convert raw format to qcow2
+qemu-img convert -f raw vyatta_new.img -O qcow2 vyatta_new.qcow2
