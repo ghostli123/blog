@@ -1,0 +1,7 @@
+# ip command for linux bridge
+ip link add name br0 type bridge
+ip link set br0 up 
+ip link set ens3 up
+ip link set ens4 up
+ip link set ens3 master br0
+ip link set ens4 master br0
