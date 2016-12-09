@@ -7,7 +7,7 @@ make install-dep
 cd build-root
 make distclean
 ./bootstrap.sh
-make V=0 PLATFORM=vpp TAG=vpp install-deb
+make -j32 V=0 PLATFORM=vpp TAG=vpp install-deb
 sudo dpkg -i /vpp/build-root/*.deb
 sudo start vpp
 sudo vppctl show interface
