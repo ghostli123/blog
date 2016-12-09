@@ -1,0 +1,13 @@
+# https://gerrit.fd.io/r/#/admin/projects/vpp
+git clone https://gerrit.fd.io/r/vpp
+# https://wiki.fd.io/view/VPP/Build,_install,_and_test_images
+cd vpp
+git pull
+make install-dep
+cd build-root
+make distclean
+./bootstrap.sh
+make V=0 PLATFORM=vpp TAG=vpp install-deb
+sudo dpkg -i /vpp/build-root/*.deb
+sudo start vpp
+sudo vppctl show interface
