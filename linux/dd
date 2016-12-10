@@ -1,0 +1,10 @@
+# dd an iso to usb and make it bootable
+# http://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal#579615
+
+"You're almost there with dd, but you're missing a step.
+
+sudo umount /dev/sdX
+sudo dd if=/path/to/ubuntu.iso of=/dev/sdX bs=4M && sync
+where sdX is your usb device (this can be verified with lsblk).
+
+The sync bit is important as dd can return before the write operation finishes."
