@@ -1,0 +1,40 @@
+# qemu command to bind virbr0
+# http://raspberrypi.stackexchange.com/questions/23474/establish-connection-between-qemu-raspbian-machine-and-host
+
+Try this:
+
+Install tunctl & libvirt
+
+tunctl — create and manage persistent TUN/TAP interfaces
+
+sudo apt-get install uml-utilities
+
+libvirt — visualization management system. This will automatically setup a DHCP server and a bridge(virbr0).[ if you already have DHCP/bridge, you may skip this and make use of vmnet1/vmnet8 ]
+
+sudo apt-get install qemu-kvm libvirt-bin
+root@unknown:~# ifconfig virbr0 
+virbr0    Link encap:Ethernet  HWaddr 62:80:41:0f:0b:56
+          inet addr:192.168.122.1  Bcast:192.168.122.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:224 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:252 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:15728 (15.7 KB)  TX bytes:18926 (18.9 KB)
+Create tap interface and bind with virbr0
+root@unknown:~# tunctl -t tap0 && ifconfig tap0 up  
+root@unknown:~# tunctl -t tap1 && ifconfig tap1 up 
+root@unknown:~# brctl addif virbr0 tap0 
+root@unknown:~# brctl addif virbr0 tap1
+
+root@unknown:~# brctl show
+bridge name   bridge id       STP enabled interfaces
+virbr0        8000.6280410f0b56   yes     eth0
+                                          tap0
+                                          tap1
+Bring up your instances:
+
+Instance-1
+
+qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2014-09-09-wheezy-raspbian.img -net nic,macaddr=00:16:3e:00:00:01 -net tap,ifname=tap0,script=no,downscript=no
+Instance-2
+qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2014-09-09-wheezy-raspbian_1.img -net nic,macaddr=00:16:3e:00:00:02 -net tap,ifname=tap1,script=no,downscript=no
