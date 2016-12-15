@@ -82,3 +82,17 @@ ip link delete p1p2.3102
 
 # create a fixed sized empty file with dd command
 dd if=/dev/zero of=1 bs=24M count=1
+
+# sort
+# sort -V test.txt
+mediate/1
+mediate/200
+mediate/3
+mediate/50
+mediate/6
+->
+mediate/1
+mediate/3
+mediate/6
+mediate/50
+mediate/200
