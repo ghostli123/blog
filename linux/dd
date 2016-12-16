@@ -8,3 +8,6 @@ sudo dd if=/path/to/ubuntu.iso of=/dev/sdX bs=4M && sync
 where sdX is your usb device (this can be verified with lsblk).
 
 The sync bit is important as dd can return before the write operation finishes."
+
+# check whether it is bootable after dd
+sudo qemu-system-x86_64 -enable-kvm -cpu host -m 2048M -smp 2,threads=1,sockets=1 -hda /dev/sdX
