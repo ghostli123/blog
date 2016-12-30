@@ -1,0 +1,4 @@
+# ufw
+# allow forwarding
+# Edit /etc/default/ufw
+DEFAULT_FORWARD_POLICY="ACCEPT"
