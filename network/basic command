@@ -4,6 +4,14 @@ ifconfig p258p2 10.0.0.2 netmask 255.255.255.0
 iperf -s -p 12345
 iperf -c 10.0.0.1 -p 12345 -t 10 -i 1
 
+# for tcp
+server: iperf -s -p 12345
+client: iperf -c 10.0.1.200 -p 12345 -M 200B -F 3 -t 10 -i 1#-M defines window size (packet size) in network; -F defines which file to send rather than dummy traffic
+
+# for udp
+server: iperf -s -p 12345
+client: iperf -c 10.0.1.200 -p 12345 -u -l 200B -b 100m #-l defines packet size (up to 1472B); -b defines traffic rate (observe server side to see loss rate)
+
 bwm-ng
 
 # measurement
