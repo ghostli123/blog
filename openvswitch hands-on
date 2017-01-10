@@ -8,7 +8,8 @@ http://www.ibm.com/developerworks/cn/cloud/library/1401_zhaoyi_openswitch/
 http://blog.csdn.net/duanbeibei/article/details/41250029
 tc qdisc add dev eth3 root netem delay 100ms
 tc qdisc del dev eth3 root netem delay 100ms
-
+tc qdisc show dev eth3
+tc qdisc del dev eth3 root
 
 ovs-vsctl add-br ovsbr
 ovs-vsctl add-port ovsbr eth0
