@@ -1,0 +1,5 @@
+system-view 
+undo stp enable
+undo stp global enable
+display stp
+display packet-drop interface Ten-GigabitEthernet
