@@ -4,3 +4,6 @@ sudo umount /mnt/huge
 sudo mount -t hugetlbfs nodev /mnt/huge
 
 sysctl vm.max_map_count=10000
+
+# if "umount: /mnt/huge: device is busy."
+fuser -vm /mnt/huge
