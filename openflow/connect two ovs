@@ -1,0 +1,48 @@
+sudo ovs-vsctl add-br ovs1
+sudo ovs-vsctl add-port ovs1 p11
+sudo ovs-vsctl set interface p11 type=patch
+sudo ovs-vsctl set interface p11 options:peer=p21
+
+sudo ovs-vsctl add-br ovs2
+sudo ovs-vsctl add-port ovs2 p21
+sudo ovs-vsctl set interface p21 type=patch
+sudo ovs-vsctl set interface p21 options:peer=p11
+
+sudo ovs-vsctl show
+
+
+
+================================================================================
+# test 
+sudo docker run --name ns1 --net='none' -itd onos/tutorial-dist /bin/bash
+pid1=$(sudo docker inspect -f '{{.State.Pid}}' ns1) 
+sudo ln -s /proc/$pid1/ns/net /var/run/netns/ns1
+
+sudo docker run --name ns2 --net='none' -itd onos/tutorial-dist /bin/bash
+pid2=$(sudo docker inspect -f '{{.State.Pid}}' ns2) 
+sudo ln -s /proc/$pid2/ns/net /var/run/netns/ns2
+
+
+sudo ovs-vsctl add-port ovs1 tap1 -- set Interface tap1 type=internal
+sudo ip link set tap1 netns ns1
+sudo ip netns exec ns1 ifconfig tap1 hw ether 00:00:00:00:00:01
+sudo ip netns exec ns1 ip link set dev tap1 up
+
+
+sudo ovs-vsctl add-port ovs2 tap2 -- set Interface tap2 type=internal
+sudo ip link set tap2 netns ns2
+sudo ip netns exec ns2 ifconfig tap2 hw ether 00:00:00:00:00:02
+sudo ip netns exec ns2 ip link set dev tap2 up
+
+
+sudo ifconfig ovs1 192.168.0.1
+sudo ifconfig ovs2 192.168.0.10
+
+sudo ip netns exec ns1 ip addr add 192.168.0.2 dev tap1
+sudo ip netns exec ns2 ip addr add 192.168.0.3 dev tap2
+
+sudo ip netns exec ns1 ip route add default dev tap1
+sudo ip netns exec ns2 ip route add default dev tap2
+
+
+ip netns exec ns1 ping 192.168.0.3
