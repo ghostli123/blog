@@ -11,7 +11,27 @@ sudo ovs-vsctl set interface p21 options:peer=p11
 sudo ovs-vsctl show
 
 
+================================================================================
+# connect 5 ovs full mesh
 
+#!/bin/bash
+switch=5
+for (( c=1; c<=$switch; c++ ))
+do
+    sudo ovs-vsctl add-br ovs$c
+done
+for (( s=1; s<=$switch; s++ ))
+do
+    for (( c=1; c<=$switch; c++ ))
+    do
+        if [ $s -ne $c ]; then
+            sudo ovs-vsctl add-port ovs$s p$s$c
+            sudo ovs-vsctl set interface p$s$c type=patch
+            sudo ovs-vsctl set interface p$s$c options:peer=p$c$s
+         fi
+    done
+done
+sudo ovs-vsctl show
 ================================================================================
 # test 
 sudo docker run --name ns1 --net='none' -itd onos/tutorial-dist /bin/bash
