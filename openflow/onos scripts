@@ -56,10 +56,10 @@ sudo rm /var/run/netns/*
 let s=5
 for (( c=1; c<=$s; c++ ))
 do 
-  # if out-of-band
+    # if out-of-band
 	# sudo docker run --name ns$c --net='none' -itd onos/tutorial-dist /bin/bash
-  # else onos controllers server as in-band control
-	sudo docker run -t -P  -i -d --name ns$c --net='none' -itd onos/tutorial-dist /bin/bash
+    # else onos controllers server as in-band control
+	sudo docker run -t -P  -i -d --name ns$c --net='none' onos/tutorial-dist
 	let pid=$(sudo docker inspect -f '{{.State.Pid}}' ns$c) 
 	sudo ln -s /proc/$pid/ns/net /var/run/netns/ns$c
 done
@@ -138,6 +138,9 @@ send "$password\r"
 }
 }
 send "\r"
+send "\r"
+send "\r"
+send "\r"
 
 ==============================================================
 ## onos2.sh
@@ -158,15 +161,3 @@ onos -w $OC1
 ./onos1.sh
 onos-package
 ./onos2.sh
-
-
-
-
-
-
-
-
-
-
-
-
