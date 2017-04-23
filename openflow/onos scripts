@@ -1,0 +1,172 @@
+#==============================================================
+#yang_ovs_ns
+#==============================================================
+## ovs_clear.sh
+#!/bin/bash
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo ovs-vsctl del-br ovs$c
+done
+
+#==============================================================
+## ovs.sh
+#!/bin/bash
+let switch=5
+for (( c=1; c<=$switch; c++ ))
+do
+    sudo ovs-vsctl add-br ovs$c
+done
+for (( s=1; s<=$switch; s++ ))
+do
+    for (( c=1; c<=$switch; c++ ))
+    do
+        if [ $s -ne $c ]; then
+            sudo ovs-vsctl add-port ovs$s p$s$c
+            sudo ovs-vsctl set interface p$s$c type=patch
+            sudo ovs-vsctl set interface p$s$c options:peer=p$c$s
+         fi
+    done
+done
+
+let port=6633
+
+let onos=5
+for (( c=1; c<=$onos; c++ ))
+do
+    sudo ovs-vsctl set-controller ovs$c tcp:$OC1:$port tcp:$OC2:$port tcp:$OC3:$port tcp:$OC4:$port tcp:$OC5:$port
+done
+
+sudo ovs-vsctl show
+
+#==============================================================
+## docker_ns_clear.sh
+#!/bin/bash
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo docker stop ns$c
+    sudo docker rm ns$c
+done
+sudo rm /var/run/netns/*
+
+#==============================================================
+## docker_ns.sh
+#!/bin/bash
+let s=5
+for (( c=1; c<=$s; c++ ))
+do 
+  # if out-of-band
+	# sudo docker run --name ns$c --net='none' -itd onos/tutorial-dist /bin/bash
+  # else onos controllers server as in-band control
+	sudo docker run -t -P  -i -d --name ns$c --net='none' -itd onos/tutorial-dist /bin/bash
+	let pid=$(sudo docker inspect -f '{{.State.Pid}}' ns$c) 
+	sudo ln -s /proc/$pid/ns/net /var/run/netns/ns$c
+done
+
+for (( c=1; c<=$s; c++ ))
+do
+	sudo ovs-vsctl add-port ovs$c tap$c -- set Interface tap$c type=internal
+	sudo ip link set tap$c netns ns$c
+	sudo ip netns exec ns$c ifconfig tap$c hw ether 00:00:00:00:00:0$c
+	sudo ip netns exec ns$c ip link set dev tap$c up
+done
+
+for (( c=1; c<=$s; c++ ))
+do
+	sudo ifconfig ovs$c 192.168.0.1$c
+	sudo ip netns exec ns$c ip addr add 192.168.0.$c dev tap$c
+	sudo ip netns exec ns$c ip route add default dev tap$c
+done
+
+#==============================================================
+## e.sh
+#!/bin/bash
+./ovs_clear.sh
+./ovs.sh
+./docker_ns_clear.sh
+./docker_ns.sh
+
+
+
+
+
+
+
+==============================================================
+yang_onos
+==============================================================
+## docker_onos_clear.sh
+#!/bin/bash
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo docker stop onos-$c
+    sudo docker rm onos-$c
+done
+
+==============================================================
+## docker_onos.sh
+#!/bin/bash
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo docker run -t -P  -i -d --name onos-$c onos/tutorial-dist
+done
+
+==============================================================
+## onos0.sh
+#!/bin/bash
+cell docker
+
+==============================================================
+## onos1.sh
+#!/bin/expect
+set onos 5
+set password "onosrocks\r"
+for {set i 1} {$i < $onos} {incr i 1} {
+    set OC$i $env(OC$i)
+    puts "OC$i";
+}
+
+for {set i 1} {$i < $onos} {incr i 1} {
+spawn onos-push-keys $OC1 {
+expect "root@$OC$i's password: " {
+send $password
+expect "root@$OC$i's password: " 
+send $password
+}
+}
+}
+
+==============================================================
+## onos2.sh
+#!/bin/bash
+
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    onos-install $OC$c
+done
+
+onos -w $OC1
+
+==============================================================
+## onos.sh
+#!/bin/bash
+./onos0.sh
+./onos1.sh
+onos-package
+./onos2.sh
+
+
+
+
+
+
+
+
+
+
+
+
