@@ -121,23 +121,23 @@ cell docker
 
 ==============================================================
 ## onos1.sh
-#!/bin/expect
+#!/usr/bin/expect
 set onos 5
-set password "onosrocks\r"
-for {set i 1} {$i < $onos} {incr i 1} {
-    set OC$i $env(OC$i)
-    puts "OC$i";
-}
+set password "onosrocks"
 
-for {set i 1} {$i < $onos} {incr i 1} {
-spawn onos-push-keys $OC1 {
-expect "root@$OC$i's password: " {
-send $password
-expect "root@$OC$i's password: " 
-send $password
+for {set i 1} {$i <= $onos} {incr i 1} {
+spawn onos-push-keys $env(OC$i)
+expect "Are you sure you want to continue connecting (yes/no)?" {
+send "yes\r"
+puts $env(OC$i)
+expect "root@$env(OC$i)'s password: "
+send "$password\r"
+expect "root@$env(OC$i)'s password: "
+send "$password\r"
+
 }
 }
-}
+send "\r"
 
 ==============================================================
 ## onos2.sh
