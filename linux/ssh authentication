@@ -1,0 +1,6 @@
+ssh log location: /var/log/auth
+lastlog: log of last ssh login of all users
+clear lastlog: 
+  cat > /var/log/lastlog
+  rm /var/log/wtmp
+  rm /var/log/auth*
