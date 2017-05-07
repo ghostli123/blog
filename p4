@@ -13,3 +13,9 @@ add_entry forward 10.0.0.10 set_dmac 00:04:00:00:00:00
 add_entry forward 10.0.1.10 set_dmac 00:04:00:00:00:01
 add_entry ipv4_lpm 10.0.0.10 32 set_nhop 10.0.0.10 1
 add_entry ipv4_lpm 10.0.1.10 32 set_nhop 10.0.1.10 2
+
+
+
+sudo mn -c 
+sudo killall behavioral-model 
+redis-cli FLUSHALL
