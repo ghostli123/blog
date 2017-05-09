@@ -1,1 +1,156 @@
+#==========clean up topology=========================
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo ovs-vsctl del-br ovs$c
+done
 
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo docker stop ns$c
+    sudo docker rm ns$c
+done
+sudo rm /var/run/netns/*
+
+#===========================================
+
+let switch=5
+for (( c=1; c<=$switch; c++ ))
+do
+    sudo ovs-vsctl add-br ovs$c
+done
+for (( s=1; s<=$switch; s++ ))
+do
+    for (( c=1; c<=$switch; c++ ))
+    do
+        if [ $s -ne $c ]; then
+            sudo ovs-vsctl add-port ovs$s p$s$c
+            sudo ovs-vsctl set interface p$s$c type=patch
+            sudo ovs-vsctl set interface p$s$c options:peer=p$c$s
+         fi
+    done
+done
+
+
+let s=5
+for (( c=1; c<=$s; c++ ))
+do
+    sudo docker stop ns$c
+    sudo docker rm ns$c
+done
+sudo rm /var/run/netns/*
+
+
+let s=5
+for (( c=1; c<=$s; c++ ))
+do 
+	sudo docker run -t -P  -i -d --name ns$c --net='none' ghostli123/ubuntu
+	let pid=$(sudo docker inspect -f '{{.State.Pid}}' ns$c) 
+	sudo ln -s /proc/$pid/ns/net /var/run/netns/ns$c
+done
+
+for (( c=1; c<=$s; c++ ))
+do
+	sudo ovs-vsctl add-port ovs$c tap$c -- set Interface tap$c type=internal
+	sudo ip link set tap$c netns ns$c
+	sudo ip netns exec ns$c ifconfig tap$c hw ether 00:00:00:00:00:0$c
+	sudo ip netns exec ns$c ip link set dev tap$c up
+done
+
+for (( c=1; c<=$s; c++ ))
+do
+	sudo ifconfig ovs$c 192.168.$c.1
+	sudo ip netns exec ns$c ip addr add 192.168.$c.2 dev tap$c
+	sudo ip netns exec ns$c ip route add default dev tap$c
+done
+
+
+#======================================================================================================
+
+#configure container to host
+#!/bin/bash
+s=5
+for (( c=1; c<=$s; c++ ))
+do 
+	sudo ovs-ofctl add-flow ovs$c ip,nw_dst=192.168.$c.2,priority=100,actions=output:5
+	sudo ovs-ofctl add-flow ovs$c ip,nw_dst=192.168.$c.1,priority=100,actions=output:LOCAL
+	arp -s 192.168.$c.2 00:00:00:00:00:0$c
+	ip netns exec ns$c arp -s 192.168.$c.1 $(cat /sys/class/net/ovs$c/address)	
+done
+
+
+#configure container to container
+#!/bin/bash
+#ovs1
+sudo ovs-ofctl add-flow ovs1 ip,nw_dst=192.168.1.2,priority=100,actions=output:5
+sudo ovs-ofctl add-flow ovs1 ip,nw_dst=192.168.2.2,priority=100,actions=output:1
+sudo ovs-ofctl add-flow ovs1 ip,nw_dst=192.168.3.2,priority=100,actions=output:2
+sudo ovs-ofctl add-flow ovs1 ip,nw_dst=192.168.4.2,priority=100,actions=output:3
+sudo ovs-ofctl add-flow ovs1 ip,nw_dst=192.168.5.2,priority=100,actions=output:4
+
+sudo ovs-ofctl add-flow ovs2 ip,nw_dst=192.168.2.2,priority=100,actions=output:5
+sudo ovs-ofctl add-flow ovs2 ip,nw_dst=192.168.1.2,priority=100,actions=output:1
+sudo ovs-ofctl add-flow ovs2 ip,nw_dst=192.168.3.2,priority=100,actions=output:2
+sudo ovs-ofctl add-flow ovs2 ip,nw_dst=192.168.4.2,priority=100,actions=output:3
+sudo ovs-ofctl add-flow ovs2 ip,nw_dst=192.168.5.2,priority=100,actions=output:4
+
+sudo ovs-ofctl add-flow ovs3 ip,nw_dst=192.168.3.2,priority=100,actions=output:5
+sudo ovs-ofctl add-flow ovs3 ip,nw_dst=192.168.1.2,priority=100,actions=output:1
+sudo ovs-ofctl add-flow ovs3 ip,nw_dst=192.168.2.2,priority=100,actions=output:2
+sudo ovs-ofctl add-flow ovs3 ip,nw_dst=192.168.4.2,priority=100,actions=output:3
+sudo ovs-ofctl add-flow ovs3 ip,nw_dst=192.168.5.2,priority=100,actions=output:4
+
+sudo ovs-ofctl add-flow ovs4 ip,nw_dst=192.168.4.2,priority=100,actions=output:5
+sudo ovs-ofctl add-flow ovs4 ip,nw_dst=192.168.1.2,priority=100,actions=output:1
+sudo ovs-ofctl add-flow ovs4 ip,nw_dst=192.168.2.2,priority=100,actions=output:2
+sudo ovs-ofctl add-flow ovs4 ip,nw_dst=192.168.3.2,priority=100,actions=output:3
+sudo ovs-ofctl add-flow ovs4 ip,nw_dst=192.168.5.2,priority=100,actions=output:4
+
+sudo ovs-ofctl add-flow ovs5 ip,nw_dst=192.168.5.2,priority=100,actions=output:5
+sudo ovs-ofctl add-flow ovs5 ip,nw_dst=192.168.1.2,priority=100,actions=output:1
+sudo ovs-ofctl add-flow ovs5 ip,nw_dst=192.168.2.2,priority=100,actions=output:2
+sudo ovs-ofctl add-flow ovs5 ip,nw_dst=192.168.3.2,priority=100,actions=output:3
+sudo ovs-ofctl add-flow ovs5 ip,nw_dst=192.168.4.2,priority=100,actions=output:4
+
+
+ip netns exec ns1 arp -s 192.168.2.2 00:00:00:00:00:02
+ip netns exec ns1 arp -s 192.168.3.2 00:00:00:00:00:03
+ip netns exec ns1 arp -s 192.168.4.2 00:00:00:00:00:04
+ip netns exec ns1 arp -s 192.168.5.2 00:00:00:00:00:05
+
+ip netns exec ns2 arp -s 192.168.1.2 00:00:00:00:00:01
+ip netns exec ns2 arp -s 192.168.3.2 00:00:00:00:00:03
+ip netns exec ns2 arp -s 192.168.4.2 00:00:00:00:00:04
+ip netns exec ns2 arp -s 192.168.5.2 00:00:00:00:00:05
+
+ip netns exec ns3 arp -s 192.168.1.2 00:00:00:00:00:01
+ip netns exec ns3 arp -s 192.168.2.2 00:00:00:00:00:02
+ip netns exec ns3 arp -s 192.168.4.2 00:00:00:00:00:04
+ip netns exec ns3 arp -s 192.168.5.2 00:00:00:00:00:05
+
+ip netns exec ns4 arp -s 192.168.1.2 00:00:00:00:00:01
+ip netns exec ns4 arp -s 192.168.2.2 00:00:00:00:00:02
+ip netns exec ns4 arp -s 192.168.3.2 00:00:00:00:00:03
+ip netns exec ns4 arp -s 192.168.5.2 00:00:00:00:00:05
+
+ip netns exec ns5 arp -s 192.168.1.2 00:00:00:00:00:01
+ip netns exec ns5 arp -s 192.168.2.2 00:00:00:00:00:02
+ip netns exec ns5 arp -s 192.168.3.2 00:00:00:00:00:03
+ip netns exec ns5 arp -s 192.168.4.2 00:00:00:00:00:04
+
+
+#test purpose
+#!/bin/bash
+switch=5
+for (( s=1; s<=$switch; s++ ))
+do 
+	for (( c=1; c<=$switch; c++ )) 
+	do 
+        if [ $s -ne $c ]; then
+			ip netns exec ns$s ping -c 1 192.168.$c.2
+		else
+			ip netns exec ns$s ping -c 1 192.168.$c.1
+        fi
+    done
+done
