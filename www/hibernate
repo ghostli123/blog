@@ -1,2 +1,39 @@
 hibernate database connection wait_timeout
 http://blog.csdn.net/lyy396/article/details/50556437
+
+//Add finally under all hibernate generated functions in dao file. 
+finally {
+getSession().close();
+}
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>  
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>  
+    <property name="hibernate.connection.useUnicode">true</property>  
+    <property name="hibernate.connection.characterEncoding">UTF-8</property>  
+
+    <property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>  
+    <property name="hibernate.c3p0.min_size">5</property>  
+    <property name="hibernate.c3p0.max_size">20</property>  
+    <property name="hibernate.c3p0.timeout">5</property>  
+    <property name="hibernate.c3p0.max_statements">50</property>  
+    <property name="hibernate.c3p0.testConnectionOnCheckout">true</property>  
+
+		<property name="myeclipse.connection.profile">MySQL</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="connection.password">xxxxxxxx</property>
+		<property name="connection.username">root</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/attphs</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<mapping resource="dao/Admin.hbm.xml" />
+		<mapping resource="dao/Deployment.hbm.xml" />
+		<mapping resource="dao/Ucpe.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
