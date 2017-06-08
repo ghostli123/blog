@@ -5,7 +5,7 @@ sudo apt-get install libssl-dev
 
 make xconfig
 make 
-make modules
+%make modules 
 su
 make install 
 make modules_install
