@@ -9,3 +9,5 @@ make modules
 su
 make install 
 make modules_install
+update-initramfs
+update-grub
