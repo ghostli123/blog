@@ -1,2 +1,11 @@
+https://multipath-tcp.org/pmwiki.php/Users/DoItYourself
+
 apt-get install libqt4-dev
 sudo apt-get install libssl-dev
+
+make xconfig
+make 
+make modules
+su
+make install 
+make modules_install
