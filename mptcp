@@ -11,3 +11,11 @@ make install
 make modules_install
 update-initramfs -u
 update-grub
+
+
+cd /etc/network/if-up.d/
+touch mptcp_up
+chmod 777 mptcp_up
+cd /etc/network/if-post-down.d/
+touch mptcp_down
+chmod 777 mptcp_down
