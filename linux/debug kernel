@@ -1,2 +1,2 @@
-printk()
-dmesg | grep
+printk(KERN_ERR "%s: scope:%d, loop:%d, running:%d, nomulti:%x, up=%x\n", netdev->name, ifa->ifa_scope, ipv4_is_loopback(ifa->ifa_local), netif_running(netdev), netdev->flags & IFF_NOMULTIPATH, netdev->flags & IFF_UP );
+dmesg | grep scope
