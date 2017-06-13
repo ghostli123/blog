@@ -1,7 +1,7 @@
 https://multipath-tcp.org/pmwiki.php/Users/DoItYourself
 
 apt-get install libqt4-dev
-sudo apt-get install libssl-dev
+apt-get install libssl-dev
 
 make xconfig
 make 
@@ -19,3 +19,9 @@ chmod 777 mptcp_up
 cd /etc/network/if-post-down.d/
 touch mptcp_down
 chmod 777 mptcp_down
+
+
+sysctl -w net.mptcp.mptcp_enabled=1
+sysctl -w net.mptcp.mptcp_checksum=1
+sysctl -w net.mptcp.mptcp_syn_retries=3
+sysctl -w net.mptcp.mptcp_path_manager=fullmesh
