@@ -9,7 +9,7 @@ make
 su
 make install 
 make modules_install
-update-initramfs -u
+update-initramfs -u -k 4.4.70
 update-grub
 
 
