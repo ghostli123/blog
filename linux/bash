@@ -6,3 +6,6 @@ ifconfig p1p1 10.0.0.$s1/24 up
 ifconfig p1p2 10.0.0.$s2/24 up
 ifconfig p2p1 10.0.0.$s3/24 up
 ifconfig p2p2 10.0.0.$s4/24 up
+
+# set a environment variable which can be accessed by others
+export var="123"
