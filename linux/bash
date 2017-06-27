@@ -10,3 +10,7 @@ ifconfig p2p2 10.0.0.$s4/24 up
 # set a environment variable which can be accessed by others
 export var="123"
 echo "export VARNAME=\"my value\"" >> ~/.bashrc
+
+# convert ip to hex
+$ IP_ADDR=192.168.1.128
+$ printf '%02X' ${IP_ADDR//./ } ; echo
