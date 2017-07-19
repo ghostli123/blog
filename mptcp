@@ -25,3 +25,13 @@ sysctl -w net.mptcp.mptcp_enabled=1
 sysctl -w net.mptcp.mptcp_checksum=1
 sysctl -w net.mptcp.mptcp_syn_retries=3
 sysctl -w net.mptcp.mptcp_path_manager=fullmesh
+
+mptcptrace
+git clone https://bitbucket.org/bhesmans/mptcptrace
+./autogen.sh
+sudo apt-get install automake
+wget https://sourceforge.net/projects/check/files/check/0.9.8/check-0.9.8.tar.gz/download?use_mirror=iweb&us%5Ce_mirror=cdnetworks-us-2
+./configure & make install
+sudo apt-get install build-essential
+sudo apt-get install libssl-dev
+
