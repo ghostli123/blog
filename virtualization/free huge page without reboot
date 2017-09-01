@@ -9,5 +9,5 @@ sysctl vm.max_map_count=10000
 fuser -vm /mnt/huge
 
 
-grep HugePages_ /proc/meminfo
+grep -i huge /proc/meminfo
 sysctl vm.nr_hugepages=20480
