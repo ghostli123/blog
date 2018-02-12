@@ -1,0 +1,9 @@
+#cite from https://askubuntu.com/questions/216398/set-older-kernel-as-default-grub-entry
+#First, make a backup copy of /etc/default/grub. In case something goes wrong, you can easily revert to the known-good copy.
+sudo cp /etc/default/grub /etc/default/grub.bak
+#Then edit the file using the text editor of your choice (ie. gedit, etc.).
+sudo gedit /etc/default/grub
+#Find the line that contains GRUB_DEFAULT - this is what you'll want to edit to set the default. You must know the full name of the kernel you want - e.g. Ubuntu, with Linux 3.13.0-53-generic - along with the full name of the "advanced menu" - e.g. Advanced options for Ubuntu.
+#You then combine those two strings with > and set GRUB_DEFAULT to them as: GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 3.13.0-53-generic" (including quotes).
+#Save it, then build the updated grub menu.
+sudo update-grub
