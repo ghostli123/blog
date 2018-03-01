@@ -2,3 +2,6 @@ dpkg -l | tail -n +6 | grep -E 'linux-image-[0-9]+' | grep -Fv $(uname -r)
 
 # modify grub to set default boot kernel
 https://askubuntu.com/questions/216398/set-older-kernel-as-default-grub-entry
+
+# install a new linux kernel
+https://www.tecmint.com/upgrade-kernel-in-ubuntu/
