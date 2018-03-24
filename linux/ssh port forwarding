@@ -1,0 +1,2 @@
+ssh -NfD 8086 aliyun
+#after that, configure browser socks proxy to use local address and port number 8086
