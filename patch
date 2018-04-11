@@ -1,0 +1,5 @@
+# checking patch file first
+patch -p1 --dry-run < ../udp-signal.diff
+
+# actually executing patch file
+patch -p1 < ../udp-signal.diff
