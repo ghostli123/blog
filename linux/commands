@@ -46,6 +46,8 @@ You also need to edit /etc/ssh/sshd_config, and comment out the following line:
 PermitRootLogin without-password
 Just below it, add the following line:
 PermitRootLogin yes
+
+sudo passwd
 Then restart SSH:
 service ssh restart
 
