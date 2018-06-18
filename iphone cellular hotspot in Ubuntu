@@ -1,0 +1,8 @@
+sudo apt-get install ipheth-utils.
+
+sudo apt-get install libimobiledevice-dev
+
+sudo apt-get install libimobiledevice-utils
+
+
+idevicepair unpair && idevicepair pair
