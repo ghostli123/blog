@@ -1,0 +1,9 @@
+Create a directory to serve as the mount location:
+
+sudo mkdir /media/iso
+Mount the ISO in the target directory:
+
+sudo mount -o loop path/to/iso/file/YOUR_ISO_FILE.ISO /media/iso
+Unmount the ISO:
+
+sudo umount /media/iso
